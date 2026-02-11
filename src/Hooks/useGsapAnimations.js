@@ -12,86 +12,89 @@ const useGsapAnimations = (ref) => {
       heroTl.from('.hero-left', {
         x: -100,
         opacity: 0,
-        duration: 1.2,
-        ease: 'power4.out'
+        duration: 1.5,
+        ease: 'expo.out'
       })
       .from('.hero-right', {
         x: 100,
         opacity: 0,
-        duration: 1.2,
-        ease: 'power4.out'
-      }, '-=1');
+        duration: 1.5,
+        ease: 'expo.out'
+      }, '-=1.2')
+      .from('.hero-badge, .hero-title, .hero-description, .hero-buttons', {
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1,
+        ease: 'power3.out'
+      }, '-=0.8');
 
-      // Generic Section Title Reveal
-      gsap.utils.toArray('.section-title').forEach(title => {
-        gsap.from(title, {
+      // Universal Section Animation
+      const sections = gsap.utils.toArray('section');
+      sections.forEach(section => {
+        gsap.fromTo(section,
+          { opacity: 0, y: 100 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // Advanced Stagger for all card types
+      const cardSelectors = [
+        '.advanced-project-card',
+        '.skill-swag-card',
+        '.background-card',
+        '.ai-card',
+        '.app-card',
+        '.logic-card'
+      ];
+
+      cardSelectors.forEach(selector => {
+        gsap.from(selector, {
           scrollTrigger: {
-            trigger: title,
+            trigger: selector,
             start: 'top 90%',
           },
-          y: 30,
+          y: 50,
+          scale: 0.9,
           opacity: 0,
           duration: 1,
-          ease: 'back.out(1.7)'
+          stagger: 0.15,
+          ease: 'power3.out',
+          clearProps: 'all' // Crucial: ensures interactivity after animation
         });
       });
 
-      // Advanced Project Cards Reveal
-      gsap.from('.advanced-project-card', {
-        scrollTrigger: {
-          trigger: '.projects-grid',
-          start: 'top 85%',
-        },
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out'
-      });
-
-      // Skill Cards reveal with stagger
-      gsap.from('.skill-swag-card', {
+      // Interactive Skills Reveal
+      gsap.from('.skill-badge-item', {
         scrollTrigger: {
           trigger: '.skills-container',
-          start: 'top 85%',
+          start: 'top 80%',
         },
-        scale: 0.8,
+        scale: 0,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'elastic.out(1, 0.75)'
+        duration: 0.6,
+        stagger: {
+          each: 0.05,
+          from: 'center'
+        },
+        ease: 'back.out(2)'
       });
 
-      // Background cards reveal
-      gsap.from('.background-card', {
-        scrollTrigger: {
-          trigger: '.background-grid',
-          start: 'top 85%',
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power2.out'
-      });
-
-      // Courses reveal
-      gsap.from('#courses .advanced-project-card', {
-        scrollTrigger: {
-          trigger: '#courses .projects-grid',
-          start: 'top 85%',
-        },
-        x: -50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power2.out'
-      });
-
-      // Float animation for profile photo
+      // Floating Photo Animation
       gsap.to('.photo-circle', {
-        y: 15,
-        duration: 2,
+        y: -20,
+        rotation: 5,
+        duration: 3,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut'
