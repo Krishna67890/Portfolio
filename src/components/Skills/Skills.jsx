@@ -8,9 +8,9 @@ const Skills = () => {
       skills: [
         { name: "React.js", icon: "react" },
         { name: "Tailwind", icon: "tailwind" },
-        { name: "TypeScript", icon: "typescript" },
+        { name: "TypeScript", icon: "ts" },
         { name: "JavaScript", icon: "js" },
-        { name: "GSAP", icon: "framer" }, // Framer as a close match for animation
+        { name: "GSAP", icon: "greensock" },
         { name: "Next.js", icon: "nextjs" }
       ],
       icon: "💻"
@@ -44,7 +44,7 @@ const Skills = () => {
     {
       title: "Virtualization",
       skills: [
-        { name: "VirtualBox", icon: "vbox" },
+        { name: "VirtualBox", icon: "virtualbox" },
         { name: "Docker", icon: "docker" }
       ],
       icon: "🚀"
@@ -90,7 +90,7 @@ const Skills = () => {
                         alt={skill.name}
                         className="skill-icon-img"
                         onError={(e) => {
-                          e.target.src = "https://skillicons.dev/icons?i=js"; // Fallback
+                          e.target.src = "https://skillicons.dev/icons?i=js"; // Fallback to JS if still failing
                         }}
                       />
                     </div>
