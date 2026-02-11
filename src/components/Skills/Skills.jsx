@@ -7,11 +7,11 @@ const Skills = () => {
       title: "Frontend",
       skills: [
         { name: "React.js", icon: "react" },
-        { name: "Tailwind CSS", icon: "tailwind" },
-        { name: "TypeScript", icon: "ts" },
+        { name: "Tailwind", icon: "tailwind" },
+        { name: "TypeScript", icon: "typescript" },
         { name: "JavaScript", icon: "js" },
-        { name: "GSAP", icon: "gsap" },
-        { name: "JSX", icon: "react" }
+        { name: "GSAP", icon: "framer" }, // Framer as a close match for animation
+        { name: "Next.js", icon: "nextjs" }
       ],
       icon: "💻"
     },
@@ -42,10 +42,10 @@ const Skills = () => {
       icon: "🛠️"
     },
     {
-      title: "DevOps & Virtualization",
+      title: "Virtualization",
       skills: [
-        { name: "VirtualBox", icon: "ae" }, // Placeholder icon if exact not found, but I'll use a string for skillicons
-        { name: "Dual Boot", icon: "linux" }
+        { name: "VirtualBox", icon: "vbox" },
+        { name: "Docker", icon: "docker" }
       ],
       icon: "🚀"
     },
@@ -63,6 +63,7 @@ const Skills = () => {
       skills: [
         { name: "Python", icon: "python" },
         { name: "C", icon: "c" },
+        { name: "C++", icon: "cpp" },
         { name: "Bash", icon: "bash" }
       ],
       icon: "🌟"
@@ -83,11 +84,16 @@ const Skills = () => {
               <div className="skill-badges">
                 {cat.skills.map((skill, i) => (
                   <div key={i} className="skill-badge-item" title={skill.name}>
-                    <img
-                      src={`https://skillicons.dev/icons?i=${skill.icon}`}
-                      alt={skill.name}
-                      className="skill-icon-img"
-                    />
+                    <div className="icon-wrapper">
+                      <img
+                        src={`https://skillicons.dev/icons?i=${skill.icon}`}
+                        alt={skill.name}
+                        className="skill-icon-img"
+                        onError={(e) => {
+                          e.target.src = "https://skillicons.dev/icons?i=js"; // Fallback
+                        }}
+                      />
+                    </div>
                     <span className="skill-name-text">{skill.name}</span>
                   </div>
                 ))}
@@ -97,9 +103,24 @@ const Skills = () => {
         </div>
 
         <div className="exploring-section">
-          <h3>🚀 Currently exploring:</h3>
+          <h3>🚀 Currently Learning & Exploring:</h3>
           <div className="exploring-icons">
-            <img src="https://skillicons.dev/icons?i=nextjs,docker,automation" alt="exploring" />
+            <div className="exploring-item">
+              <img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js" />
+              <span>Next.js</span>
+            </div>
+            <div className="exploring-item">
+              <img src="https://skillicons.dev/icons?i=docker" alt="Docker" />
+              <span>Docker</span>
+            </div>
+            <div className="exploring-item">
+              <img src="https://skillicons.dev/icons?i=githubactions" alt="Automation" />
+              <span>Automation</span>
+            </div>
+            <div className="exploring-item">
+              <img src="https://skillicons.dev/icons?i=aws" alt="Cloud" />
+              <span>Cloud</span>
+            </div>
           </div>
         </div>
       </div>

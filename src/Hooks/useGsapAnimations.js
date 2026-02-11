@@ -7,48 +7,45 @@ gsap.registerPlugin(ScrollTrigger);
 const useGsapAnimations = (ref) => {
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero Section Entrance
+      // Hero Section Entrance - Cinematic & Bouncing
       const heroTl = gsap.timeline();
       heroTl.from('.hero-left', {
-        x: -100,
+        y: -150,
         opacity: 0,
         duration: 1.5,
-        ease: 'expo.out'
+        ease: 'bounce.out'
       })
       .from('.hero-right', {
         x: 100,
         opacity: 0,
-        duration: 1.5,
-        ease: 'expo.out'
-      }, '-=1.2')
+        duration: 1.2,
+        ease: 'power4.out'
+      }, '-=1')
       .from('.hero-badge, .hero-title, .hero-description, .hero-buttons', {
-        y: 30,
+        y: 50,
         opacity: 0,
-        stagger: 0.1,
+        stagger: 0.15,
         duration: 1,
-        ease: 'power3.out'
+        ease: 'back.out(1.7)'
       }, '-=0.8');
 
-      // Universal Section Animation
+      // Universal Section Animation - Bouncing Entry
       const sections = gsap.utils.toArray('section');
       sections.forEach(section => {
-        gsap.fromTo(section,
-          { opacity: 0, y: 100 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: 'power4.out',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 85%',
-              toggleActions: 'play none none none'
-            }
-          }
-        );
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          },
+          opacity: 0,
+          y: 80,
+          duration: 1.5,
+          ease: 'elastic.out(1, 0.5)'
+        });
       });
 
-      // Advanced Stagger for all card types
+      // Advanced Stagger for Cards - Jumping Animation
       const cardSelectors = [
         '.advanced-project-card',
         '.skill-swag-card',
@@ -64,17 +61,20 @@ const useGsapAnimations = (ref) => {
             trigger: selector,
             start: 'top 90%',
           },
-          y: 50,
-          scale: 0.9,
+          y: 100,
+          rotationX: -15,
           opacity: 0,
-          duration: 1,
-          stagger: 0.15,
-          ease: 'power3.out',
-          clearProps: 'all' // Crucial: ensures interactivity after animation
+          duration: 1.2,
+          stagger: {
+            amount: 0.4,
+            from: 'start'
+          },
+          ease: 'back.out(2)',
+          clearProps: 'all'
         });
       });
 
-      // Interactive Skills Reveal
+      // Interactive Skills Reveal - Exploding from Center
       gsap.from('.skill-badge-item', {
         scrollTrigger: {
           trigger: '.skills-container',
@@ -82,22 +82,31 @@ const useGsapAnimations = (ref) => {
         },
         scale: 0,
         opacity: 0,
-        duration: 0.6,
+        rotation: 360,
+        duration: 1,
         stagger: {
-          each: 0.05,
+          each: 0.03,
           from: 'center'
         },
-        ease: 'back.out(2)'
+        ease: 'elastic.out(1, 0.3)'
       });
 
-      // Floating Photo Animation
+      // Floating Photo Animation - With Reflection Glow
       gsap.to('.photo-circle', {
-        y: -20,
-        rotation: 5,
-        duration: 3,
+        y: -30,
+        duration: 2.5,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut'
+      });
+
+      // Continuous Reflection Sweep Animation for all RGB cards
+      gsap.to('.rgb-card::after', {
+        left: '200%',
+        duration: 3,
+        repeat: -1,
+        ease: 'none',
+        repeatDelay: 2
       });
 
     }, ref);
