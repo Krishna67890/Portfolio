@@ -1,0 +1,48 @@
+.background-section {
+  padding: 100px 0;
+  background: var(--bg-color); /* Updated to use theme variable */
+}
+
+.background-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.background-card {
+  padding: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.background-card h3 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.background-card p {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+}
+
+.card-detail {
+  font-size: 0.9rem !important;
+  opacity: 0.8;
+  border-top: 1px solid var(--border-color);
+  padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .background-grid {
+    grid-template-columns: 1fr;
+  }
+}

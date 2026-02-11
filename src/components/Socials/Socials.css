@@ -1,0 +1,49 @@
+.socials-section {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.socials-grid {
+  display: flex;
+  justify-content: space-evenly; /* Evenly space the social cards */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 40px;
+  margin-top: 50px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.social-card:hover {
+  transform: translateY(-10px);
+  opacity: 0.8;
+}
+
+.social-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.social-name {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .socials-grid {
+        justify-content: center;
+        gap: 30px;
+    }
+}
