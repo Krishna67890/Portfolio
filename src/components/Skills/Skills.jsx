@@ -5,37 +5,66 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Frontend",
-      skills: ["React.js", "Tailwind CSS", "TypeScript", "JavaScript", "GSAP", "JSX"],
+      skills: [
+        { name: "React.js", icon: "react" },
+        { name: "Tailwind CSS", icon: "tailwind" },
+        { name: "TypeScript", icon: "ts" },
+        { name: "JavaScript", icon: "js" },
+        { name: "GSAP", icon: "gsap" },
+        { name: "JSX", icon: "react" }
+      ],
       icon: "💻"
     },
     {
       title: "Backend",
-      skills: ["Node.js", "Express.js", "REST APIs"],
+      skills: [
+        { name: "Node.js", icon: "nodejs" },
+        { name: "Express.js", icon: "express" },
+        { name: "REST APIs", icon: "postman" }
+      ],
       icon: "⚙️"
     },
     {
       title: "Database",
-      skills: ["MongoDB"],
+      skills: [
+        { name: "MongoDB", icon: "mongodb" }
+      ],
       icon: "🗄️"
     },
     {
       title: "Tools & Platforms",
-      skills: ["Git", "GitHub", "VS Code", "Postman"],
+      skills: [
+        { name: "Git", icon: "git" },
+        { name: "GitHub", icon: "github" },
+        { name: "VS Code", icon: "vscode" },
+        { name: "Postman", icon: "postman" }
+      ],
       icon: "🛠️"
     },
     {
       title: "DevOps & Virtualization",
-      skills: ["VirtualBox", "Vectrus VM", "Dual Boot Configurations"],
+      skills: [
+        { name: "VirtualBox", icon: "ae" }, // Placeholder icon if exact not found, but I'll use a string for skillicons
+        { name: "Dual Boot", icon: "linux" }
+      ],
       icon: "🚀"
     },
     {
       title: "OS Knowledge",
-      skills: ["Windows 10/11", "Ubuntu 24.04 LTS", "Chrome OS Flex", "Manjaro", "Linux Mint"],
+      skills: [
+        { name: "Windows", icon: "windows" },
+        { name: "Ubuntu", icon: "ubuntu" },
+        { name: "Linux", icon: "linux" }
+      ],
       icon: "🖥️"
     },
     {
       title: "Others",
-      skills: ["Python (beginner)", "C", "Bash scripting (basic)", "UI/UX awareness"],
+      skills: [
+        { name: "Python", icon: "python" },
+        { name: "C", icon: "c" },
+        { name: "Bash", icon: "bash" }
+      ],
       icon: "🌟"
     }
   ];
@@ -53,8 +82,13 @@ const Skills = () => {
               </div>
               <div className="skill-badges">
                 {cat.skills.map((skill, i) => (
-                  <div key={i} className="skill-badge-item">
-                    <span className="badge-swag">{skill}</span>
+                  <div key={i} className="skill-badge-item" title={skill.name}>
+                    <img
+                      src={`https://skillicons.dev/icons?i=${skill.icon}`}
+                      alt={skill.name}
+                      className="skill-icon-img"
+                    />
+                    <span className="skill-name-text">{skill.name}</span>
                   </div>
                 ))}
               </div>
@@ -64,10 +98,8 @@ const Skills = () => {
 
         <div className="exploring-section">
           <h3>🚀 Currently exploring:</h3>
-          <div className="exploring-badges">
-            <span className="badge-swag exploring">Next.js</span>
-            <span className="badge-swag exploring">Docker basics</span>
-            <span className="badge-swag exploring">Full system automation</span>
+          <div className="exploring-icons">
+            <img src="https://skillicons.dev/icons?i=nextjs,docker,automation" alt="exploring" />
           </div>
         </div>
       </div>

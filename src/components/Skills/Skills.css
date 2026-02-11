@@ -4,7 +4,7 @@
 
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
 
@@ -14,11 +14,13 @@
   border-radius: 20px;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .skill-swag-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
 }
 
 .category-header {
@@ -45,38 +47,72 @@
 .skill-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 20px;
+  justify-content: flex-start;
 }
 
 .skill-badge-item {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-.badge-swag {
-  display: inline-block;
-  padding: 8px 16px;
-  background: rgba(59, 130, 246, 0.1);
+.skill-badge-item:hover {
+  transform: scale(1.2);
+}
+
+.skill-icon-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
+}
+
+.skill-name-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: center;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.exploring-section {
+  margin-top: 60px;
+  text-align: center;
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px dashed var(--primary-color);
+}
+
+.exploring-section h3 {
+  margin-bottom: 25px;
   color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  cursor: default;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
+  font-weight: 800;
 }
 
-.badge-swag:hover {
-  background: var(--primary-color);
-  color: white;
-  transform: scale(1.05) rotate(-2deg);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+.exploring-icons img {
+  height: 50px;
+  margin: 0 10px;
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 600px) {
+.exploring-icons img:hover {
+  transform: scale(1.3);
+}
+
+@media (max-width: 768px) {
   .skills-container {
     grid-template-columns: 1fr;
+  }
+
+  .skill-icon-img {
+    width: 40px;
+    height: 40px;
   }
 }
