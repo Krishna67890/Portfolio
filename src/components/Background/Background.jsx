@@ -18,9 +18,9 @@ const Background = () => {
           <div className="background-card rgb-card">
             <div className="card-icon">💻</div>
             <h3>Hands-on Experience</h3>
-            <p><strong>Full-Stack Development</strong></p>
-            <p>Extensive experience in the MERN Stack (MongoDB, Express, React, Node.js).</p>
-            <p className="card-detail">Built 15+ advanced web projects, clones, and interactive platforms using modern frontend and backend technologies.</p>
+            <p><strong>Development Expertise</strong></p>
+            <p>Extensive experience in MERN Stack, Game Development, and Mobile App Development.</p>
+            <p className="card-detail">Built 15+ advanced web projects, clones, and interactive platforms using modern technologies.</p>
           </div>
 
           <div className="background-card rgb-card">
@@ -32,11 +32,19 @@ const Background = () => {
           </div>
 
           <div className="background-card rgb-card">
-            <div className="card-icon">🎯</div>
-            <h3>Professional Goal</h3>
-            <p><strong>Versatile Full-Stack Developer</strong></p>
-            <p>Aiming to bridge the gap between efficient code and system-level performance.</p>
-            <p className="card-detail">Constantly learning DevOps tools like Docker and exploring system automation.</p>
+            <div className="card-icon">🚀</div>
+            <h3>Current Learning</h3>
+            <p><strong>Expanding Horizons</strong></p>
+            <p>Deepening expertise in <strong>Game Development</strong>, Advanced Web, and App Development.</p>
+            <p className="card-detail">Currently mastering game engines and cross-platform mobile frameworks.</p>
+          </div>
+
+          <div className="background-card rgb-card">
+            <div className="card-icon">☁️</div>
+            <h3>Future Goals</h3>
+            <p><strong>DevOps & Cloud</strong></p>
+            <p>Aiming to master DevOps practices, Cloud computing (AWS/Azure), and system automation.</p>
+            <p className="card-detail">To become a versatile developer who understands the full lifecycle of software—from code to cloud deployment.</p>
           </div>
         </div>
       </div>
