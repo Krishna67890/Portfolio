@@ -32,6 +32,7 @@ const Header = () => {
     { name: 'AI', href: '#ai-projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Resume', href: 'https://www.linkedin.com/posts/krishna-patil-rajput-b66b03340_hi-linkedin-im-krishna-patil-rajput-a-activity-7354165496759435267-BV-V?utm_source=share&utm_medium=member_android&rcm=ACoAAFWX3r4BoZNXBTYw6j3bpV0Im06Tru2b56A', isExternal: true },
   ];
 
   return (
@@ -46,7 +47,13 @@ const Header = () => {
             <ul className="nav-list">
               {menuItems.map((item, index) => (
                 <li key={index}>
-                  <a href={item.href}>{item.name}</a>
+                  <a
+                    href={item.href}
+                    target={item.isExternal ? "_blank" : "_self"}
+                    rel={item.isExternal ? "noopener noreferrer" : ""}
+                  >
+                    {item.name}
+                  </a>
                 </li>
               ))}
             </ul>
