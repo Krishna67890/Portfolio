@@ -1,118 +1,182 @@
-.skills-section {
+.skills-section-cinematic {
   padding: 100px 0;
+  perspective: 1500px;
+  overflow: hidden;
 }
 
-.skills-container {
+.skills-immersive-wall {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 50px;
+  justify-items: center;
+  padding: 60px 0;
 }
 
-.skill-swag-card {
-  padding: 30px;
-  text-align: left;
-  border-radius: 20px;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.skills-immersive-wall.mini {
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.skill-item-advanced {
   display: flex;
   flex-direction: column;
-}
-
-.skill-swag-card:hover {
-  transform: translateY(-10px);
-}
-
-.category-header {
-  display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 15px;
-}
-
-.category-icon {
-  font-size: 2rem;
-}
-
-.category-header h3 {
-  color: var(--primary-color);
-  font-size: 1.3rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.skill-badges {
-  display: flex;
-  flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.skill-badge-item {
+.icon-container-floating {
+  position: relative;
+  width: 90px;
+  height: 90px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  transition: transform 0.3s ease;
-  cursor: pointer;
+  z-index: 2;
 }
 
-.skill-badge-item:hover {
-  transform: scale(1.2);
-}
-
-.skill-icon-img {
-  width: 45px;
-  height: 45px;
+.skill-main-logo {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
+  filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4));
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 3;
 }
 
-.skill-name-text {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-color);
-  text-align: center;
-  opacity: 0.8;
-  white-space: nowrap;
+/* Real-time Reflection Effect */
+.skill-reflection {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  transform: scaleY(-0.7) translateY(-10px);
+  opacity: 0.3;
+  filter: blur(4px);
+  mask-image: linear-gradient(to bottom, white, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, white, transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.exploring-section {
-  margin-top: 60px;
-  text-align: center;
-  padding: 40px;
-  background: var(--card-bg);
-  border-radius: 20px;
-  border: 1px dashed var(--primary-color);
+.skill-reflection img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.exploring-section h3 {
-  margin-bottom: 25px;
-  color: var(--primary-color);
+/* Subtle Aura/Glow behind icons */
+.skill-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.skill-text-label {
+  font-size: 0.9rem;
   font-weight: 800;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
-.exploring-icons img {
-  height: 50px;
-  margin: 0 10px;
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
-  transition: transform 0.3s ease;
+/* AMAZING BOUNCING & JUMPING HOVER */
+.bounce-hover:hover .skill-main-logo {
+  transform: translateY(-35px) scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 30px 25px rgba(59, 130, 246, 0.7));
 }
 
-.exploring-icons img:hover {
-  transform: scale(1.3);
+.bounce-hover:hover .skill-text-label {
+  transform: translateY(-10px);
+  opacity: 1;
+  color: #fff;
+  text-shadow: 0 0 15px var(--primary-color);
+}
+
+.bounce-hover:hover .skill-glow {
+  opacity: 1;
+  animation: pulse-glow 2s infinite;
+}
+
+.bounce-hover:hover .skill-reflection {
+  opacity: 0.1;
+  transform: scaleY(-0.5) translateY(20px);
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 0.4; }
+}
+
+/* Future Tech Zone Styling */
+.future-tech-zone {
+  margin-top: 120px;
+  text-align: center;
+  padding: 60px;
+  background: rgba(59, 130, 246, 0.03);
+  border-radius: 40px;
+  border: 1px dashed rgba(59, 130, 246, 0.2);
+}
+
+.zone-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 60px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  position: relative;
+  display: inline-block;
+}
+
+.zone-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--rgb-border);
+  background-size: 400%;
+  animation: rgb-anim 8s linear infinite;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .skills-immersive-wall {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
 }
 
 @media (max-width: 768px) {
-  .skills-container {
-    grid-template-columns: 1fr;
+  .skills-immersive-wall {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
+  .icon-container-floating {
+    width: 70px;
+    height: 70px;
+  }
+  .skill-text-label {
+    font-size: 0.75rem;
+  }
+}
 
-  .skill-icon-img {
-    width: 40px;
-    height: 40px;
+@media (max-width: 480px) {
+  .skills-immersive-wall {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
