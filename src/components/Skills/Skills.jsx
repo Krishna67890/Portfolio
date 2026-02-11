@@ -11,7 +11,7 @@ const Skills = () => {
         { name: "TypeScript", icon: "ts" },
         { name: "JavaScript", icon: "js" },
         { name: "GSAP", icon: "greensock" },
-        { name: "Next.js", icon: "nextjs" }
+        { name: "Next.js", icon: "next" }
       ],
       icon: "💻"
     },
@@ -20,14 +20,17 @@ const Skills = () => {
       skills: [
         { name: "Node.js", icon: "nodejs" },
         { name: "Express.js", icon: "express" },
-        { name: "REST APIs", icon: "postman" }
+        { name: "REST APIs", icon: "postman" },
+        { name: "Rust", icon: "rust" }
       ],
       icon: "⚙️"
     },
     {
       title: "Database",
       skills: [
-        { name: "MongoDB", icon: "mongodb" }
+        { name: "MongoDB", icon: "mongodb" },
+        { name: "MySQL", icon: "mysql" },
+        { name: "Firebase", icon: "firebase" }
       ],
       icon: "🗄️"
     },
@@ -37,14 +40,15 @@ const Skills = () => {
         { name: "Git", icon: "git" },
         { name: "GitHub", icon: "github" },
         { name: "VS Code", icon: "vscode" },
-        { name: "Postman", icon: "postman" }
+        { name: "Postman", icon: "postman" },
+        { name: "Unity", icon: "unity" }
       ],
       icon: "🛠️"
     },
     {
       title: "Virtualization",
       skills: [
-        { name: "VirtualBox", icon: "virtualbox" },
+        { name: "VirtualBox", icon: "vbox" },
         { name: "Docker", icon: "docker" }
       ],
       icon: "🚀"
@@ -59,14 +63,14 @@ const Skills = () => {
       icon: "🖥️"
     },
     {
-      title: "Others",
+      title: "Gaming & Logic",
       skills: [
+        { name: "Unity", icon: "unity" },
+        { name: "Godot", icon: "godot" },
         { name: "Python", icon: "python" },
-        { name: "C", icon: "c" },
-        { name: "C++", icon: "cpp" },
-        { name: "Bash", icon: "bash" }
+        { name: "C++", icon: "cpp" }
       ],
-      icon: "🌟"
+      icon: "🎮"
     }
   ];
 
@@ -76,21 +80,21 @@ const Skills = () => {
         <h2 className="section-title">🧠 Tech Stack & Skills</h2>
         <div className="skills-container">
           {skillCategories.map((cat, index) => (
-            <div key={index} className="skill-swag-card rgb-card">
+            <div key={index} className="skill-swag-card rgb-card reveal-card">
               <div className="category-header">
                 <span className="category-icon">{cat.icon}</span>
                 <h3>{cat.title}</h3>
               </div>
               <div className="skill-badges">
                 {cat.skills.map((skill, i) => (
-                  <div key={i} className="skill-badge-item" title={skill.name}>
+                  <div key={i} className="skill-badge-item jump-hover" title={skill.name}>
                     <div className="icon-wrapper">
                       <img
                         src={`https://skillicons.dev/icons?i=${skill.icon}`}
                         alt={skill.name}
                         className="skill-icon-img"
                         onError={(e) => {
-                          e.target.src = "https://skillicons.dev/icons?i=js"; // Fallback to JS if still failing
+                          e.target.src = `https://ui-avatars.com/api/?name=${skill.name}&background=3b82f6&color=fff`;
                         }}
                       />
                     </div>
@@ -102,25 +106,21 @@ const Skills = () => {
           ))}
         </div>
 
-        <div className="exploring-section">
-          <h3>🚀 Currently Learning & Exploring:</h3>
+        <div className="exploring-section rgb-card">
+          <h3 className="reflect-text">🚀 Future Horizons (Coming Soon)</h3>
           <div className="exploring-icons">
-            <div className="exploring-item">
-              <img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js" />
-              <span>Next.js</span>
-            </div>
-            <div className="exploring-item">
-              <img src="https://skillicons.dev/icons?i=docker" alt="Docker" />
-              <span>Docker</span>
-            </div>
-            <div className="exploring-item">
-              <img src="https://skillicons.dev/icons?i=githubactions" alt="Automation" />
-              <span>Automation</span>
-            </div>
-            <div className="exploring-item">
-              <img src="https://skillicons.dev/icons?i=aws" alt="Cloud" />
-              <span>Cloud</span>
-            </div>
+            {[
+              { name: "AWS", icon: "aws" },
+              { name: "Kubernetes", icon: "kubernetes" },
+              { name: "Terraform", icon: "terraform" },
+              { name: "Go", icon: "go" },
+              { name: "Three.js", icon: "threejs" }
+            ].map((future, idx) => (
+              <div key={idx} className="exploring-item jump-hover">
+                <img src={`https://skillicons.dev/icons?i=${future.icon}`} alt={future.name} />
+                <span>{future.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
