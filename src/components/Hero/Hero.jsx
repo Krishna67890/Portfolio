@@ -3,6 +3,8 @@ import './Hero.css';
 import profileLogo from '../../assets/Krishna logo.jpg';
 
 const Hero = () => {
+  const resumeLink = "https://www.linkedin.com/posts/krishna-patil-rajput-b66b03340_hi-linkedin-im-krishna-patil-rajput-a-activity-7354165496759435267-BV-V?utm_source=share&utm_medium=member_android&rcm=ACoAAFWX3r4BoZNXBTYw6j3bpV0Im06Tru2b56A";
+
   return (
     <section id="hero" className="hero-section">
       <div className="container">
@@ -27,6 +29,7 @@ const Hero = () => {
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary">Advanced Projects</a>
               <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">GitHub Profile</a>
+              <a href={resumeLink} target="_blank" rel="noopener noreferrer" className="btn btn-download-cv">Download CV</a>
             </div>
           </div>
         </div>
