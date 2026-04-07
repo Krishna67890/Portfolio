@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Hero.css';
 import profileLogo from '../../assets/Krishna logo.jpg';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';

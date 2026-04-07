@@ -87,7 +87,7 @@ export const usePortfolioVoice = () => {
     };
 
     window.speechSynthesis.speak(utterance);
-  }, [voices]);
+  }, [voiceType]); // Added voiceType as dependency
 
   const stop = useCallback(() => {
     window.speechSynthesis.cancel();

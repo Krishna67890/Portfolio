@@ -229,6 +229,7 @@ const GameMode = ({ isOpen, onClose }) => {
       window.removeEventListener('keyup', handleKeyUp);
       canvas.removeEventListener('touchstart', handleCanvasTouch);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, gameState, gameType]);
 
   const startGame = (type) => {
