@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Sidebar.css';
 
 const Sidebar = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
+  const { speak } = usePortfolioVoice();
   const [isOpen, setIsOpen] = useState(false);
 
   const icons = {
@@ -56,6 +58,17 @@ const Sidebar = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
                 if (window.innerWidth < 1024) setIsOpen(false);
               }}
               title={item.name}
+              onMouseEnter={() => {
+                if (item.name === 'My Journey') {
+                  speak("Click to view my professional journey and background details.");
+                } else if (item.name === 'Terminal') {
+                  speak("Launch the Command Center terminal.");
+                } else if (item.name === 'Game Mode') {
+                  speak("Enter the interactive arcade mode.");
+                } else if (item.name === 'Projects') {
+                  speak("Browse my technical project gallery.");
+                }
+              }}
             >
               <span className="nav-icon">{item.icon}</span>
               <span className="nav-text">{item.name}</span>

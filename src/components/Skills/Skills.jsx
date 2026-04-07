@@ -60,7 +60,7 @@ const Skills = () => {
   return (
     <section id="skills" className="skills-section-cinematic">
       <div className="container">
-        <h2 className="section-title reveal-text" onMouseEnter={() => speak("This is my technical arsenal. Hover over any technology to learn more.")}>🚀 Technical Arsenal</h2>
+        <h2 className="section-title reveal-text" onMouseEnter={() => speak("This is my technical arsenal. Hover over any technology to learn more.")}>🛡️ Technical Arsenal</h2>
 
         <div className="skills-immersive-wall">
           {allSkills.map((skill, index) => (
