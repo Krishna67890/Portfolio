@@ -19,20 +19,151 @@
   justify-content: center;
 }
 
+.photo-circle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
 .photo-circle {
-  width: 400px;
-  height: 400px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid var(--border-color);
   background: var(--card-bg);
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-circle:hover {
+  transform: scale(1.03);
+  border-color: var(--primary-color);
+}
+
+.photo-circle.speaking-active {
+  border-color: #ef4444;
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.4);
 }
 
 .photo-circle img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.ai-visualizer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ai-visualizer .bar {
+  width: 8px;
+  height: 40px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+  animation: ai-wave 1s infinite ease-in-out;
+}
+
+.ai-visualizer .bar:nth-child(1) { animation-delay: 0.1s; }
+.ai-visualizer .bar:nth-child(2) { animation-delay: 0.2s; }
+.ai-visualizer .bar:nth-child(3) { animation-delay: 0.3s; }
+.ai-visualizer .bar:nth-child(4) { animation-delay: 0.4s; }
+.ai-visualizer .bar:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes ai-wave {
+  0%, 100% { height: 20px; opacity: 0.3; }
+  50% { height: 80px; opacity: 1; }
+}
+
+.voice-controls {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.voice-type-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+}
+
+.voice-type-toggle:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.voice-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ai-narrator-btn {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: var(--primary-color);
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+}
+
+.ai-narrator-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.ai-narrator-btn.active {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
+  animation: pulse-red 1.5s infinite;
+}
+
+.speaking-hint {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #ef4444;
+  font-weight: 700;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.5; }
+}
+
+@keyframes pulse-red {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .hero-right {
@@ -55,13 +186,12 @@
   font-size: 4rem;
   line-height: 1.1;
   margin-bottom: 24px;
-  color: var(--text-color);
+  color: #fff;
   font-weight: 800;
 }
 
-/* RGB Text Effect for Name */
 .highlight-rgb {
-  background: var(--rgb-border);
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
   background-size: 400%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -77,8 +207,7 @@
 
 .hero-description {
   font-size: 1.25rem;
-  color: var(--text-color);
-  opacity: 0.8;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -105,24 +234,17 @@
 .btn-primary {
   background: var(--primary-color);
   color: white;
-  box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
 }
 
 .btn-secondary {
   border: 2px solid var(--border-color);
-  color: var(--text-color);
+  color: #fff;
   background: var(--card-bg);
 }
 
-.btn-download-cv {
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-}
-
-.btn-download-cv:hover {
+.btn-resume {
   background: var(--primary-color);
-  color: #fff !important;
+  color: white;
 }
 
 @media (max-width: 992px) {
@@ -144,8 +266,8 @@
 
 @media (max-width: 480px) {
   .photo-circle {
-    width: 240px;
-    height: 240px;
+    width: 260px;
+    height: 260px;
   }
   
   .hero-title {

@@ -1,0 +1,303 @@
+.game-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(15px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.game-modal.arcade-ui {
+  background: #020617;
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  border-radius: 28px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(59, 130, 246, 0.25), inset 0 0 20px rgba(59, 130, 246, 0.1);
+  animation: modalAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalAppear {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- MENU --- */
+.game-menu {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.glitch-text {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 8px;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #3b82f6, #60a5fa, #3b82f6);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.menu-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 24px;
+  padding: 40px 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.menu-card:hover {
+  transform: translateY(-10px);
+  border-color: #3b82f6;
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.4);
+}
+
+.card-icon {
+  font-size: 4rem;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+}
+
+.menu-card h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.menu-card p {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* --- GAME SCREEN --- */
+.game-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+  font-family: 'Inter', sans-serif;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-label { color: #64748b; font-weight: 800; font-size: 0.9rem; }
+.hud-value { color: #3b82f6; font-size: 1.8rem; font-weight: 900; font-family: monospace; }
+
+.hud-title {
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
+.hud-btn {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hud-btn:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.canvas-wrapper {
+  position: relative;
+  background: #000;
+  width: 100%;
+  aspect-ratio: 2/1;
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- MOBILE CONTROLS --- */
+.mobile-tap-area {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.03);
+  color: rgba(255, 255, 255, 0.15);
+  font-weight: 900;
+  font-size: 2rem;
+  pointer-events: auto;
+}
+
+.mobile-arrows {
+  display: none;
+  justify-content: space-between;
+  padding: 30px 40px;
+  background: rgba(15, 23, 42, 0.9);
+  gap: 20px;
+}
+
+.arrow-btn {
+  flex: 1;
+  height: 80px;
+  background: rgba(59, 130, 246, 0.15);
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.1s;
+}
+
+.arrow-btn:active {
+  background: #3b82f6;
+  transform: scale(0.95);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+.pc-hints {
+  text-align: center;
+  padding: 15px;
+  background: #020617;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* --- GAME OVER --- */
+.game-over {
+  padding: 100px 40px;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(239, 68, 68, 0.1), transparent);
+}
+
+.crash-text {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #ef4444;
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.final-score {
+  margin-bottom: 50px;
+}
+
+.final-score span {
+  color: #64748b;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.score-num {
+  font-size: 6rem;
+  font-weight: 900;
+  color: #fff;
+  font-family: monospace;
+}
+
+.over-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* --- UTILS --- */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.close-btn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .game-overlay { padding: 0; }
+  .game-modal.arcade-ui { height: 100%; border-radius: 0; max-width: none; border: none; }
+
+  .glitch-text { font-size: 2.2rem; margin-bottom: 40px; }
+  .menu-grid { grid-template-columns: 1fr; gap: 20px; }
+  .menu-card { padding: 30px 20px; }
+
+  .hud-value { font-size: 1.4rem; }
+  .hud-title { display: none; }
+  .hud-btn { padding: 6px 15px; font-size: 0.8rem; }
+
+  .mobile-tap-area { display: flex; }
+  .mobile-arrows { display: flex; }
+  .pc-hints { display: none; }
+
+  .crash-text { font-size: 2.8rem; }
+  .score-num { font-size: 4.5rem; }
+  .over-actions { flex-direction: column; padding: 0 40px; }
+}

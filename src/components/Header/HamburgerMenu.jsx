@@ -2,9 +2,18 @@ import React from 'react';
 import './HamburgerMenu.css';
 
 const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
-  const handleClick = (href) => {
+  const handleClick = (item) => {
     toggleMenu();
-    const element = document.querySelector(href);
+    if (item.isDownload) {
+      const link = document.createElement('a');
+      link.href = item.href;
+      link.download = 'Krishna_Patil_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+    const element = document.querySelector(item.href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -20,9 +29,10 @@ const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
               <a
                 href={item.href}
                 onClick={(e) => {
-                  e.preventDefault();
-                  handleClick(item.href);
+                  if (!item.isDownload) e.preventDefault();
+                  handleClick(item);
                 }}
+                download={item.isDownload ? "Krishna_Patil_Resume.pdf" : undefined}
               >
                 {item.name}
               </a>

@@ -34,22 +34,46 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
-  border: none;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   padding: 10px;
   cursor: pointer;
   z-index: 2;
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.slider-btn.prev { left: 10px; }
-.slider-btn.next { right: 10px; }
+.slider-btn:hover {
+  background: var(--primary-color);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.slider-btn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+.slider-btn.prev { left: 15px; }
+.slider-btn.next { right: 15px; }
+
+@media (max-width: 768px) {
+  .slider-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-color: var(--primary-color);
+  }
+
+  .slider-btn.prev { left: 5px; }
+  .slider-btn.next { right: 5px; }
+}
 
 .slider-dots {
   position: absolute;

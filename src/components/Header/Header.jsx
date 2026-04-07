@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HamburgerMenu from './HamburgerMenu';
 import './Header.css';
+import resumePdf from '../../assets/Krishna Patil resume.pdf';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,8 +33,17 @@ const Header = () => {
     { name: 'AI', href: '#ai-projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
-    { name: 'Resume', href: 'https://www.linkedin.com/posts/krishna-patil-rajput-b66b03340_hi-linkedin-im-krishna-patil-rajput-a-activity-7354165496759435267-BV-V?utm_source=share&utm_medium=member_android&rcm=ACoAAFWX3r4BoZNXBTYw6j3bpV0Im06Tru2b56A', isExternal: true },
   ];
+
+  const handleProjectSelect = (e) => {
+    const targetId = e.target.value;
+    if (targetId) {
+      const element = document.querySelector(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <header className="header">
@@ -56,8 +66,24 @@ const Header = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <a href={resumePdf} download="Krishna_Patil_Resume.pdf" className="resume-btn">
+                  Resume
+                </a>
+              </li>
             </ul>
           </nav>
+
+          <div className="project-selector-container">
+            <select className="project-selector" onChange={handleProjectSelect} aria-label="Select Project">
+              <option value="">Quick Jump</option>
+              <option value="#projects">Advanced Projects</option>
+              <option value="#games">Games</option>
+              <option value="#ai-projects">AI Projects</option>
+              <option value="#skills">Skills</option>
+              <option value="#contact">Contact</option>
+            </select>
+          </div>
 
           <div className="theme-toggle-container">
             <button className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle Theme">
@@ -79,7 +105,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <HamburgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} items={menuItems} />
+      <HamburgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} items={[...menuItems, { name: 'Resume', href: resumePdf, isDownload: true }]} />
     </header>
   );
 };

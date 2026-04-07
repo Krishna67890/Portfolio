@@ -84,6 +84,30 @@ import little2 from '../../assets/Little-Learners-Hub 2.png';
 const Projects = () => {
   const advancedProjects = [
     {
+      title: "Samadhan Shoe Mart",
+      description: "A comprehensive shoe e-commerce platform with WhatsApp-integrated payment and order management.",
+      tech: "React, WhatsApp API, Payment Integration",
+      image: tech1, // Replace with appropriate image if available
+      screenshots: [tech1],
+      link: "https://krishnablogy.blogspot.com/2026/04/new-samadhan-shoes-mart.html"
+    },
+    {
+      title: "Velocity Motors",
+      description: "Premium automotive showcase and service platform for modern vehicle management and sales.",
+      tech: "React, UI/UX, Automotive Tech",
+      image: tech2, // Replace with appropriate image if available
+      screenshots: [tech2],
+      link: "https://krishnablogy.blogspot.com/2026/02/velociymotors.html"
+    },
+    {
+      title: "Prix Robotics (AI Agent)",
+      description: "An intelligent scholarship AI agent designed to assist students in finding and applying for scholarships.",
+      tech: "AI, NLP, React, Scholarship API",
+      image: ai1, // Replace with appropriate image if available
+      screenshots: [ai1],
+      link: "https://krishnablogy.blogspot.com/2026/03/scholarship-ai-agent.html"
+    },
+    {
       title: "Tech Fundamentals Hub",
       description: "A comprehensive learning platform designed to help beginners master core technical concepts with ease and clarity.",
       tech: "React, JavaScript, CSS, Blog Integration",

@@ -56,6 +56,47 @@
   opacity: 0.7;
 }
 
+.nav-list a.resume-btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-list a.resume-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Project Selector Styles */
+.project-selector-container {
+  display: flex;
+  align-items: center;
+}
+
+.project-selector {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.project-selector:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.project-selector option {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
 /* Theme Toggle Styles */
 .theme-toggle-container {
   display: flex;
