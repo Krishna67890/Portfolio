@@ -13,8 +13,8 @@ const Sidebar = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
     Map: (size) => (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" /><line x1="9" y1="3" x2="9" y2="18" /><line x1="15" y1="6" x2="15" y2="21" /></svg>
     ),
-    Rocket: (size) => (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" /><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3" /><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5" /></svg>
+    Briefcase: (size) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
     ),
     Cpu: (size) => (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><path d="M15 2v2" /><path d="M15 20v2" /><path d="M2 15h2" /><path d="M2 9h2" /><path d="M20 15h2" /><path d="M20 9h2" /><path d="M9 2v2" /><path d="M9 20v2" /></svg>
@@ -29,8 +29,8 @@ const Sidebar = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
 
   const menuItems = [
     { name: 'Terminal', icon: icons.Terminal(20), action: onOpenTerminal, primary: true },
-    { name: 'My Journey', icon: icons.Map(20), action: onOpenJourney },
-    { name: 'Projects', icon: icons.Rocket(20), href: '#projects' },
+    { name: 'My Journey', icon: icons.Map(20), action: () => { speak("🎓 My Journey & Background"); onOpenJourney(); } },
+    { name: 'Projects', icon: icons.Briefcase(20), href: '#projects' },
     { name: 'Game Mode', icon: icons.Gamepad(20), action: onOpenGame },
   ];
 

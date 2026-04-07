@@ -75,9 +75,9 @@ const Hero = () => {
             >
               Hi, I'm <span className="highlight-rgb">Krishna Patil Rajput</span> 👨‍💻
             </h1>
-            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 2nd Year IT Student at Matoshri College of Engineering. I build high-performance MERN systems and immersive game worlds.")}>
+            <p className="hero-description" onMouseEnter={() => speak("I'm a passionate 2nd Year IT Student at Matoshri College of Engineering. I'm a Full-Stack, Android, and Game Developer.")}>
               I'm a passionate 2nd Year IT Student at <strong>Matoshri College of Engineering</strong>.
-              I build high-performance MERN systems and immersive game worlds.
+              I'm a <strong>Full-Stack, Android, and Game Developer</strong>.
             </p>
             <p className="hero-description" onMouseEnter={() => speak("Nashik, India. Exploring AI, Robotics, and the future of web interactive experiences.")}>
               📍 <strong>Nashik, India</strong>. Exploring AI, Robotics, and the future of web interactive experiences.
