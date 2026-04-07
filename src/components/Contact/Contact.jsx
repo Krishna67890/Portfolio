@@ -20,10 +20,11 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Construct the mailto URL
+    // Construct the mailto URL with two recipients
+    const recipients = "dhanadai.krishna@gmail.com,krishna.coders12@gmail.com";
     const subject = `Portfolio Contact from ${formData.name}`;
     const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AMessage: ${formData.message}`;
-    const mailtoUrl = `mailto:dhanadai.krishna@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     // Open the user's default email client
     window.location.href = mailtoUrl;
@@ -174,7 +175,11 @@ const Contact = () => {
             </button>
             
             <div className="form-footer">
-              <p onMouseEnter={() => speak("You can also email me directly at dhanadai dot krishna at gmail dot com.")}>Or email me directly at: <a href="mailto:dhanadai.krishna@gmail.com">dhanadai.krishna@gmail.com</a></p>
+              <p onMouseEnter={() => speak("You can also email me directly at dhanadai dot krishna at gmail dot com or krishna dot coders 12 at gmail dot com.")}>
+                Or email me directly at:<br />
+                <a href="mailto:dhanadai.krishna@gmail.com">dhanadai.krishna@gmail.com</a><br />
+                <a href="mailto:krishna.coders12@gmail.com">krishna.coders12@gmail.com</a>
+              </p>
             </div>
           </form>
         </div>

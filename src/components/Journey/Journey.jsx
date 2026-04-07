@@ -6,7 +6,12 @@ const Journey = ({ isOpen, onClose }) => {
   const { speak: portfolioSpeak } = usePortfolioVoice();
   const [activeVoice, setActiveVoice] = useState(null);
 
-  const journeyText = `I started my coding journey in 10th standard when I had computer science as a subject. During that time, I became curious about how games and websites were created. Watching and imagining how technology works developed my interest in coding. After 10th, I began learning HTML, CSS, and JavaScript basics during 11th standard and gradually started building advanced projects between 11th and 12th. After completing 12th, I discovered React.js and began exploring modern web development. I learned through YouTube educators like Code With Harry, completing the Sigma Web Development course consisting of around 60 to 90 videos. Later, I explored advanced React concepts through another YouTube channel called Virtual Code, where I improved my understanding of project structure and development skills. These learning experiences helped me grow significantly as a developer. During this period, I set a personal goal on Blogger.com to achieve 600 daily views. Through consistency and creativity, I successfully achieved this milestone on my website krishnablogy.blogspot.com, where I publish AI assistants, websites, study materials, and innovative posts. In my first year of college, I completed 5 React projects. Later, I was introduced to Next.js and began learning it as a more advanced framework. Within four months, I completed multiple projects using Next.js. Currently, in my second year, I started Android development using Android Studio and built applications such as Unit Converter, KrishnaBloggers GameHub, and Little Learners Hub. I also developed a Coffee Shop marketing application where users can browse and purchase coffee and dishes as a sample project. Recently, I began learning Game Development using Godot Engine and Unity, creating games like Frogger, Space Shooter, and a 3D coin collection game which is currently in progress. My goal is to continuously grow as a developer and work at companies like Amazon, Flipkart, Google, or Microsoft.`;
+  const journeyText = `🎓 My Journey & Background 📚
+Education: 2nd Year IT Student at Matoshri College of Engineering and Research Centre. Focusing on Information Technology fundamentals and advanced software engineering principles. 💻
+Hands-on Experience: Development Expertise. Extensive experience in MERN Stack, Game Development, and Mobile App Development. Built 15+ advanced web projects, clones, and interactive platforms using modern technologies. 🔧
+Systems & Virtualization: OS & Environment Management. Skilled in configuring Dual Boot with Windows and Ubuntu, and VirtualBox. Actively managing various Linux distros like Manjaro and Linux Mint for testing performance and stability. ☁️
+Future Goals: DevOps & Cloud. Aiming to master DevOps practices, Cloud computing (AWS or Azure), and system automation. To become a versatile developer who understands the full lifecycle of software—from code to cloud deployment. 🚀
+Current Learning: Expanding Horizons. Deepening expertise in Game Development, Advanced Web, and App Development. Currently mastering game engines and cross-platform mobile frameworks.`;
 
   useEffect(() => {
     if (isOpen) {
@@ -57,7 +62,57 @@ const Journey = ({ isOpen, onClose }) => {
         </div>
 
         <div className="journey-content">
-          <p>{journeyText}</p>
+          <div className="journey-grid">
+            <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Education: 2nd Year IT Student at Matoshri College. Focusing on IT fundamentals.")}>
+              <div className="card-header">
+                <span className="card-icon">📚</span>
+                <h3>Education</h3>
+              </div>
+              <p><strong>2nd Year IT Student</strong></p>
+              <p>Matoshri College of Engineering and Research Centre</p>
+              <p className="card-detail">Focusing on Information Technology fundamentals and advanced software engineering principles. 💻</p>
+            </section>
+
+            <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Development Expertise: Extensive experience in MERN, Game, and Mobile Development.")}>
+              <div className="card-header">
+                <span className="card-icon">🔧</span>
+                <h3>Hands-on Experience</h3>
+              </div>
+              <p><strong>Development Expertise</strong></p>
+              <p>Extensive experience in MERN Stack, Game Development, and Mobile App Development.</p>
+              <p className="card-detail">Built 15+ advanced web projects, clones, and interactive platforms. 🔧</p>
+            </section>
+
+            <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("OS Management: Skilled in Dual Boot and VirtualBox with Linux distros.")}>
+              <div className="card-header">
+                <span className="card-icon">☁️</span>
+                <h3>Systems & Virtualization</h3>
+              </div>
+              <p><strong>OS & Environment Management</strong></p>
+              <p>Skilled in configuring Dual Boot (Windows 10/11, Ubuntu 24.04 LTS) and VirtualBox.</p>
+              <p className="card-detail">Managing various Linux distros like Manjaro and Linux Mint for testing. ☁️</p>
+            </section>
+
+            <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Future Goals: Aiming to master DevOps and Cloud computing.")}>
+              <div className="card-header">
+                <span className="card-icon">🚀</span>
+                <h3>Future Goals</h3>
+              </div>
+              <p><strong>DevOps & Cloud</strong></p>
+              <p>Aiming to master DevOps practices, Cloud computing (AWS/Azure), and system automation.</p>
+              <p className="card-detail">Targeting the full software lifecycle—from code to cloud. 🚀</p>
+            </section>
+
+            <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Current Learning: Expanding Horizons in Game and App Development.")}>
+              <div className="card-header">
+                <span className="card-icon">🌐</span>
+                <h3>Current Learning</h3>
+              </div>
+              <p><strong>Expanding Horizons</strong></p>
+              <p>Deepening expertise in Game Development, Advanced Web, and App Development.</p>
+              <p className="card-detail">Mastering game engines and cross-platform mobile frameworks.</p>
+            </section>
+          </div>
         </div>
 
         <div className="journey-game-teaser">
