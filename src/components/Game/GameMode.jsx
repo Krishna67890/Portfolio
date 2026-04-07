@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './GameMode.css';
 
 const GameMode = ({ isOpen, onClose }) => {
+  const { speak } = usePortfolioVoice();
   const canvasRef = useRef(null);
   const [gameType, setGameType] = useState('flappy'); // 'flappy' or 'languages'
   const [score, setScore] = useState(0);
@@ -28,6 +30,18 @@ const GameMode = ({ isOpen, onClose }) => {
     { name: "Godot", color: "#478CBF" },
     { name: "Unity", color: "#FFFFFF" }
   ];
+
+  useEffect(() => {
+    if (isOpen) {
+      speak("Welcome to the Arcade Zone. Choose your challenge. Flappy Journey for milestones, or Language Master for tech skills.");
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (gameState === 'gameOver') {
+      speak(`System Crash! You scored ${score} points. Great effort!`);
+    }
+  }, [gameState, score]);
 
   useEffect(() => {
     if (!isOpen || gameState !== 'playing') return;
@@ -236,6 +250,11 @@ const GameMode = ({ isOpen, onClose }) => {
     setGameType(type);
     setScore(0);
     setGameState('playing');
+    if (type === 'flappy') {
+      speak("Launching Flappy Journey. Tap or press Space to jump over career milestones.");
+    } else {
+      speak("Launching Language Master. Catch the technologies to increase your score.");
+    }
   };
 
   if (!isOpen) return null;

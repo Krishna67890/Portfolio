@@ -61,6 +61,7 @@ const Terminal = ({ isOpen, onClose }) => {
       if (theme === 'dark' || theme === 'light') {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
+        speak(`System theme updated to ${theme} mode.`);
         return [`Theme changed to ${theme}.`];
       }
       return ['Usage: theme [dark|light]'];
