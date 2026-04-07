@@ -3,13 +3,12 @@ import { useState, useEffect, useCallback } from 'react';
 export const usePortfolioVoice = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [voices, setVoices] = useState([]);
   const [voiceType, setVoiceType] = useState(localStorage.getItem('preferredVoice') || 'male');
 
   useEffect(() => {
     const updateVoices = () => {
-      const allVoices = window.speechSynthesis.getVoices();
-      setVoices(allVoices);
+      // Just to trigger voices loading in some browsers
+      window.speechSynthesis.getVoices();
     };
 
     updateVoices();
