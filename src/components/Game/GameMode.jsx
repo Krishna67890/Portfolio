@@ -35,13 +35,13 @@ const GameMode = ({ isOpen, onClose }) => {
     if (isOpen) {
       speak("Welcome to the Arcade Zone. Choose your challenge. Flappy Journey for milestones, or Language Master for tech skills.");
     }
-  }, [isOpen]);
+  }, [isOpen, speak]);
 
   useEffect(() => {
     if (gameState === 'gameOver') {
       speak(`System Crash! You scored ${score} points. Great effort!`);
     }
-  }, [gameState, score]);
+  }, [gameState, score, speak]);
 
   useEffect(() => {
     if (!isOpen || gameState !== 'playing') return;
