@@ -65,7 +65,11 @@ function App() {
       <Journey isOpen={isJourneyOpen} onClose={() => setIsJourneyOpen(false)} />
       <GameMode isOpen={isGameOpen} onClose={() => setIsGameOpen(false)} />
 
-      <Header />
+      <Header
+        onOpenJourney={() => setIsJourneyOpen(true)}
+        onOpenGame={() => setIsGameOpen(true)}
+        onOpenTerminal={() => setIsTerminalOpen(true)}
+      />
       <main>
         <Hero />
         <Projects />

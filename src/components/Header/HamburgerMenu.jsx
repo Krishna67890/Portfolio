@@ -1,9 +1,16 @@
 import React from 'react';
+import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './HamburgerMenu.css';
 
 const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
+  const { speak } = usePortfolioVoice();
+
   const handleClick = (item) => {
     toggleMenu();
+    if (item.action) {
+      item.action();
+      return;
+    }
     if (item.isDownload) {
       const link = document.createElement('a');
       link.href = item.href;
@@ -27,12 +34,13 @@ const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
           {items.map((item, index) => (
             <li key={index}>
               <a
-                href={item.href}
+                href={item.href || '#'}
                 onClick={(e) => {
-                  if (!item.isDownload) e.preventDefault();
+                  if (!item.isDownload && !item.action) e.preventDefault();
                   handleClick(item);
                 }}
                 download={item.isDownload ? "Krishna_Patil_Resume.pdf" : undefined}
+                onMouseEnter={() => speak(item.desc)}
               >
                 {item.name}
               </a>
@@ -40,8 +48,8 @@ const HamburgerMenu = ({ isOpen, toggleMenu, items }) => {
           ))}
         </ul>
         <div className="social-links-mobile">
-          <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" onMouseEnter={() => speak("View my GitHub profile.")}>GitHub</a>
+          <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" onMouseEnter={() => speak("Connect with me on LinkedIn.")}>LinkedIn</a>
         </div>
       </div>
     </div>

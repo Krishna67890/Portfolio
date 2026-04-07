@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Terminal.css';
 
 const Terminal = ({ isOpen, onClose }) => {
+  const { speak } = usePortfolioVoice();
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([
     { type: 'system', content: 'KPR-OS [Version 2026.4.12]' },
@@ -73,7 +75,24 @@ const Terminal = ({ isOpen, onClose }) => {
       const newHistory = [...history, { type: 'input', content: `KPR@Dev:~$ ${input}` }];
 
       if (cmd === 'exit') {
+        speak("Closing the command center.");
         onClose();
+      } else if (cmd === 'ls') {
+        speak("Listing project directories.");
+        const result = commands.ls();
+        result.forEach(line => newHistory.push({ type: 'output', content: line }));
+      } else if (cmd === 'whoami') {
+        speak("Developer profile identified: Krishna Patil Rajput.");
+        const result = commands.whoami();
+        result.forEach(line => newHistory.push({ type: 'output', content: line }));
+      } else if (cmd === 'help') {
+        speak("Displaying system commands.");
+        const result = commands.help();
+        result.forEach(line => newHistory.push({ type: 'output', content: line }));
+      } else if (cmd === 'clear') {
+        speak("Terminal cleared.");
+        commands.clear();
+        return;
       } else if (commands[cmd]) {
         const result = commands[cmd](args);
         if (result) {

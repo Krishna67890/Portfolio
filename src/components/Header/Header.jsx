@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import HamburgerMenu from './HamburgerMenu';
+import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Header.css';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
 
-const Header = () => {
+const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
+  const { speak } = usePortfolioVoice();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
@@ -27,12 +29,15 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: 'Home', href: '#hero' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Games', href: '#games' },
-    { name: 'AI', href: '#ai-projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#hero', desc: "Go to the home section." },
+    { name: 'Projects', href: '#projects', desc: "Explore my technical projects and solutions." },
+    { name: 'Games', href: '#games', desc: "Play my interactive games and arcade experiences." },
+    { name: 'AI', href: '#ai-projects', desc: "Check out my artificial intelligence and robotics projects." },
+    { name: 'Skills', href: '#skills', desc: "View my technical arsenal and polyglot ambitions." },
+    { name: 'Contact', href: '#contact', desc: "Get in touch for collaborations or inquiries." },
+    { name: 'My Journey', action: onOpenJourney, desc: "Read about my professional path and background." },
+    { name: 'Terminal', action: onOpenTerminal, desc: "Launch the KPR developer terminal." },
+    { name: 'Game Mode', action: onOpenGame, desc: "Enter the full-screen arcade experience." }
   ];
 
   const handleProjectSelect = (e) => {
@@ -58,16 +63,28 @@ const Header = () => {
               {menuItems.map((item, index) => (
                 <li key={index}>
                   <a
-                    href={item.href}
+                    href={item.href || '#'}
                     target={item.isExternal ? "_blank" : "_self"}
                     rel={item.isExternal ? "noopener noreferrer" : ""}
+                    onMouseEnter={() => speak(item.desc)}
+                    onClick={(e) => {
+                      if (item.action) {
+                        e.preventDefault();
+                        item.action();
+                      }
+                    }}
                   >
                     {item.name}
                   </a>
                 </li>
               ))}
               <li>
-                <a href={resumePdf} download="Krishna_Patil_Resume.pdf" className="resume-btn">
+                <a
+                  href={resumePdf}
+                  download="Krishna_Patil_Resume.pdf"
+                  className="resume-btn"
+                  onMouseEnter={() => speak("Download my professional resume.")}
+                >
                   Resume
                 </a>
               </li>
@@ -105,7 +122,11 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <HamburgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} items={[...menuItems, { name: 'Resume', href: resumePdf, isDownload: true }]} />
+      <HamburgerMenu
+        isOpen={isMenuOpen}
+        toggleMenu={toggleMenu}
+        items={[...menuItems, { name: 'Resume', href: resumePdf, isDownload: true, desc: "Download my professional resume." }]}
+      />
     </header>
   );
 };
