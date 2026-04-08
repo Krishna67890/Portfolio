@@ -105,17 +105,17 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-download-cv"
-                onMouseEnter={() => speakAction("Preparing my professional Curriculum Vitae for your review. This contains my full academic and technical history.")}
+                onMouseEnter={() => speakAction("Opening my professional online resume for your review.")}
               >
-                Download CV
+                View Resume
               </a>
               <a
                 href={resumePdf}
                 download="Krishna_Patil_Resume.pdf"
                 className="btn btn-resume"
-                onMouseEnter={() => speakAction("Generating my quick-view resume, optimized for technical recruiters.")}
+                onMouseEnter={() => speakAction("Downloading my professional curriculum vitae, optimized for technical recruiters.")}
               >
-                Download Resume 📄
+                Download CV 📄
               </a>
             </div>
           </div>
