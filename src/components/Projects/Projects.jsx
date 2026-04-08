@@ -9,6 +9,28 @@ import tech3 from '../../assets/TechFundamentals 3.png';
 import tech4 from '../../assets/TechFundamentals 4.png';
 import tech5 from '../../assets/TechFundamentals 5.png';
 
+import samadhan1 from '../../assets/Samadhan Home 1.png';
+import samadhan2 from '../../assets/Samadhan Home Valt 2.png';
+import samadhan3 from '../../assets/Samadhan Service Center 3.png';
+import samadhan4 from '../../assets/Samadhan Login 4.png';
+import samadhan5 from '../../assets/Samadhan Profile Identity 5.png';
+import samadhan6 from '../../assets/Samadhan Watsapp Payment 6.png';
+
+import velocity1 from '../../assets/Velocity Motors 1.png';
+import velocity2 from '../../assets/Velocity Motors 2.png';
+import velocity3 from '../../assets/Velocity Motors 3.png';
+import velocity4 from '../../assets/Velocity Motors 4.png';
+import velocity5 from '../../assets/Velocity Motors 5.png';
+import velocity6 from '../../assets/Velocity Motors 6.png';
+import velocity7 from '../../assets/Velocity Motors 7.png';
+import velocity8 from '../../assets/Velocity Motors 8.png';
+
+import prix1 from '../../assets/Prix Robotics 1.png';
+import prix2 from '../../assets/Prix Robotics 2.png';
+import prix3 from '../../assets/Prix Robotics 3.png';
+import prix4 from '../../assets/Prix Robotics 4.png';
+import prix5 from '../../assets/Prix Robotics 5.png';
+
 import ai1 from '../../assets/AI assistant 1.png';
 import ai2 from '../../assets/AI assistant 2.png';
 import ai3 from '../../assets/AI assistant 3.png';
@@ -87,24 +109,24 @@ const Projects = () => {
       title: "Samadhan Shoe Mart",
       description: "A comprehensive shoe e-commerce platform with WhatsApp-integrated payment and order management.",
       tech: "React, WhatsApp API, Payment Integration",
-      image: tech1, // Replace with appropriate image if available
-      screenshots: [tech1],
+      image: samadhan1,
+      screenshots: [samadhan1, samadhan2, samadhan3, samadhan4, samadhan5, samadhan6],
       link: "https://krishnablogy.blogspot.com/2026/04/new-samadhan-shoes-mart.html"
     },
     {
       title: "Velocity Motors",
       description: "Premium automotive showcase and service platform for modern vehicle management and sales.",
       tech: "React, UI/UX, Automotive Tech",
-      image: tech2, // Replace with appropriate image if available
-      screenshots: [tech2],
+      image: velocity1,
+      screenshots: [velocity1, velocity2, velocity3, velocity4, velocity5, velocity6, velocity7, velocity8],
       link: "https://krishnablogy.blogspot.com/2026/02/velociymotors.html"
     },
     {
       title: "Prix Robotics (AI Agent)",
       description: "An intelligent scholarship AI agent designed to assist students in finding and applying for scholarships.",
       tech: "AI, NLP, React, Scholarship API",
-      image: ai1, // Replace with appropriate image if available
-      screenshots: [ai1],
+      image: prix1,
+      screenshots: [prix1, prix2, prix3, prix4, prix5],
       link: "https://krishnablogy.blogspot.com/2026/03/scholarship-ai-agent.html"
     },
     {

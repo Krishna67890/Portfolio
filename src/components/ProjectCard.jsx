@@ -5,6 +5,7 @@ import { usePortfolioVoice } from '../Hooks/usePortfolioVoice';
 const ProjectCard = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const { speak, stop } = usePortfolioVoice();
@@ -25,6 +26,34 @@ const ProjectCard = ({ project }) => {
     const isRightSwipe = distance < -minSwipeDistance;
     if (isLeftSwipe) nextSlide();
     if (isRightSwipe) prevSlide();
+  };
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'Escape') closeModal();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isModalOpen, currentImageIndex]);
+
+  const onModalTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientY);
+  };
+
+  const onModalTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientY);
+
+  const onModalTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isSwipeUp = distance > 150;
+    const isSwipeDown = distance < -150;
+    if (isSwipeUp || isSwipeDown) closeModal();
   };
 
   const images = project.screenshots || [project.image];
@@ -64,6 +93,19 @@ const ProjectCard = ({ project }) => {
     const tech = project.tech ? `Built with ${project.tech}.` : "";
     speak(`${project.title}. ${project.description} ${tech}`);
   };
+
+  const handleMouseMove = (e) => {
+    if (!isModalOpen) return;
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+
+    const x = (clientY - innerHeight / 2) / (innerHeight / 2) * 10; // Max 10deg
+    const y = (clientX - innerWidth / 2) / (innerWidth / 2) * -10; // Max 10deg
+
+    setRotate({ x, y });
+  };
+
+  const resetRotation = () => setRotate({ x: 0, y: 0 });
 
   return (
     <>
@@ -124,32 +166,68 @@ const ProjectCard = ({ project }) => {
       </div>
 
       {isModalOpen && (
-        <div className="project-modal-overlay" onClick={closeModal}>
-          <div className="project-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={closeModal}>✕</button>
-
-            <div className="modal-slider">
-              <button className="modal-nav-btn prev" onClick={prevSlide}>❮</button>
-              <div className="modal-image-container">
-                <img src={images[currentImageIndex]} alt={project.title} className="modal-image" />
-                <div className="modal-caption">
-                  <h4>{project.title}</h4>
-                  <p>Image {currentImageIndex + 1} of {images.length}</p>
-                </div>
+        <div
+          className="project-modal-overlay"
+          onClick={closeModal}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={resetRotation}
+          onTouchStart={onModalTouchStart}
+          onTouchMove={onModalTouchMove}
+          onTouchEnd={onModalTouchEnd}
+          style={{
+            background: `radial-gradient(circle at ${((rotate.y / -10) + 1) * 50}% ${((rotate.x / 10) + 1) * 50}%, rgba(59, 130, 246, 0.15) 0%, rgba(2, 6, 23, 0.85) 70%)`
+          }}
+        >
+          <div
+            className="project-modal-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+              transition: rotate.x === 0 && rotate.y === 0 ? 'transform 0.5s ease' : 'none'
+            }}
+          >
+            <div className="modal-header">
+              <div className="modal-title-info">
+                <h3>{project.title}</h3>
+                <p>Built with: {project.tech}</p>
               </div>
-              <button className="modal-nav-btn next" onClick={nextSlide}>❯</button>
+              <button className="modal-close-btn" onClick={closeModal}>✕</button>
             </div>
 
-            <div className="modal-thumbnails">
-              {images.map((img, index) => (
-                <div
-                  key={index}
-                  className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => setCurrentImageIndex(index)}
-                >
-                  <img src={img} alt="thumbnail" />
+            <div className="modal-body">
+              <div className="modal-slider">
+                <button className="modal-nav-btn prev" onClick={prevSlide}>❮</button>
+                <div className="modal-image-container zoom-container">
+                  <img src={images[currentImageIndex]} alt={project.title} className="modal-image zoom-image" />
+                  <div className="magnifier"></div>
                 </div>
-              ))}
+                <button className="modal-nav-btn next" onClick={nextSlide}>❯</button>
+              </div>
+
+              <div className="modal-sidebar">
+                <div className="modal-description-box">
+                  <h4>About Project</h4>
+                  <p>{project.description}</p>
+                </div>
+                <div className="modal-image-counter">
+                  <span>FRAME</span>
+                  <span className="counter-num">{currentImageIndex + 1} / {images.length}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-thumbnails-wrapper">
+              <div className="modal-thumbnails">
+                {images.map((img, index) => (
+                  <div
+                    key={index}
+                    className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentImageIndex(index)}
+                  >
+                    <img src={img} alt="thumbnail" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
