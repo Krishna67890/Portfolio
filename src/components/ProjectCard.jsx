@@ -47,15 +47,15 @@ const ProjectCard = ({ project }) => {
   };
 
   useEffect(() => {
-    if (!isModalOpen) return;
-
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
       if (e.key === 'Escape') closeModal();
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    if (isModalOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isModalOpen, nextSlide, prevSlide, closeModal]);
 
