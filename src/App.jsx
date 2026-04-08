@@ -5,6 +5,8 @@ import Projects from './components/Projects';
 import Games from './components/Games';
 import AIProjects from './components/AIprojects/AIProjects';
 import MobileApps from './components/MobileApps';
+import Products from './components/Products/Products';
+import Hackathons from './components/Hackathons/Hackathons';
 import Courses from './components/Courses';
 import ToolsCodes from './components/ToolsCodes';
 import Skills from './components/Skills';
@@ -73,6 +75,8 @@ function App() {
       <main>
         <Hero />
         <Projects />
+        <Hackathons />
+        <Products />
         <Games />
         <AIProjects />
         <MobileApps />

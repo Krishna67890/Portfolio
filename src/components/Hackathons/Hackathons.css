@@ -1,0 +1,113 @@
+.hackathons-section {
+  padding: 100px 20px;
+}
+
+.hackathons-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hack-card {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.hack-card:hover {
+  transform: scale(1.02);
+  border-color: var(--primary-color);
+  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
+}
+
+.hack-image {
+  position: relative;
+  height: 250px;
+}
+
+.hack-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hack-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 12px;
+  font-weight: 800;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+  font-size: 0.9rem;
+}
+
+.hack-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hack-college {
+  color: var(--primary-color);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.hack-content h3 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.hack-content p {
+  color: var(--secondary-text);
+  line-height: 1.6;
+  font-size: 1.05rem;
+  margin-bottom: 25px;
+}
+
+.hack-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.hack-link:hover {
+  color: var(--primary-color);
+  gap: 15px;
+}
+
+@media (max-width: 900px) {
+  .hack-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hack-image {
+    height: 200px;
+  }
+
+  .hack-content {
+    padding: 30px;
+  }
+
+  .hack-content h3 {
+    font-size: 1.5rem;
+  }
+}

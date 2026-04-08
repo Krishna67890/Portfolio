@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './ProjectCard.css';
 import { usePortfolioVoice } from '../Hooks/usePortfolioVoice';
 
@@ -18,6 +18,24 @@ const ProjectCard = ({ project }) => {
   };
 
   const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const images = project.screenshots || [project.image];
+
+  const nextSlide = useCallback((e) => {
+    if (e) e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const prevSlide = useCallback((e) => {
+    if (e) e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const closeModal = useCallback((e) => {
+    if (e) e.stopPropagation();
+    setIsModalOpen(false);
+    stop();
+  }, [stop]);
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
@@ -39,7 +57,7 @@ const ProjectCard = ({ project }) => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isModalOpen, currentImageIndex]);
+  }, [isModalOpen, nextSlide, prevSlide, closeModal]);
 
   const onModalTouchStart = (e) => {
     setTouchEnd(null);
@@ -56,8 +74,6 @@ const ProjectCard = ({ project }) => {
     if (isSwipeUp || isSwipeDown) closeModal();
   };
 
-  const images = project.screenshots || [project.image];
-
   useEffect(() => {
     if (images.length <= 1 || isModalOpen) return;
     const interval = setInterval(() => {
@@ -66,26 +82,10 @@ const ProjectCard = ({ project }) => {
     return () => clearInterval(interval);
   }, [images.length, isModalOpen]);
 
-  const nextSlide = (e) => {
-    if (e) e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevSlide = (e) => {
-    if (e) e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
   const openModal = (e) => {
     e.stopPropagation();
     setIsModalOpen(true);
     speak(`Viewing full screen images for ${project.title}`);
-  };
-
-  const closeModal = (e) => {
-    if (e) e.stopPropagation();
-    setIsModalOpen(false);
-    stop();
   };
 
   const handleMouseEnter = () => {
