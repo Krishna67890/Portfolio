@@ -67,7 +67,17 @@ const Hero = () => {
           </div>
 
           <div className="hero-right">
-            <div className="hero-badge" onMouseEnter={() => speak("2026 Developer Showcase")}>✨ 2026 Developer Showcase</div>
+            <div className="quick-links-container">
+              <div className="hero-badge" onMouseEnter={() => speak("2026 Developer Showcase")}>✨ 2026 Developer Showcase</div>
+              <div className="hero-mini-socials">
+                <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">🐙</a>
+                <a href="https://www.linkedin.com/in/krishna-patil-rajput-b66b03340" target="_blank" rel="noopener noreferrer" title="LinkedIn">💼</a>
+                <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer" title="Microsoft">Ⓜ️</a>
+                <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer" title="Kaggle">📊</a>
+                <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer" title="Credly">🏅</a>
+                <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer" title="Hack2Skills">🏆</a>
+              </div>
+            </div>
             <h1
               className="hero-title"
               onClick={() => speak("I am Krishna Patil Rajput, a 2nd-year IT student at Matoshri College. I am a specialist in MERN stacks and an enthusiast in AI and Robotics from Nashik.")}
@@ -82,6 +92,15 @@ const Hero = () => {
             <p className="hero-description" onMouseEnter={() => speak("Nashik, India. Exploring AI, Robotics, and the future of web interactive experiences.")}>
               📍 <strong>Nashik, India</strong>. Exploring AI, Robotics, and the future of web interactive experiences.
             </p>
+
+            <div className="hero-links-row">
+              <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer">GitHub</a> •
+              <a href={resumePdf} download="Krishna_Patil_Resume.pdf">Download CV</a> •
+              <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">Microsoft</a> •
+              <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">Kaggle</a> •
+              <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">Credly</a> •
+              <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer">🏆 Hack2Skills</a>
+            </div>
 
             <div className="hero-buttons">
               <a

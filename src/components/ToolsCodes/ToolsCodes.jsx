@@ -17,7 +17,7 @@ import typing2 from '../../assets/Typing 2.png';
 import typing3 from '../../assets/typing 3.png';
 import typing4 from '../../assets/typing 4.png';
 
-const ToolsCodes = () => {
+const ToolsCodes = ({ searchQuery }) => {
   const codes = [
     {
       title: "Cyber-Hub Learners",
@@ -45,12 +45,22 @@ const ToolsCodes = () => {
     }
   ];
 
+  const filteredCodes = codes.filter(code =>
+    code.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    code.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    code.tech.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredCodes.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="tools" className="logic-section">
       <div className="container">
         <h2 className="section-title">💻 Logic & Core Coding</h2>
         <div className="projects-grid">
-          {codes.map((item, index) => (
+          {filteredCodes.map((item, index) => (
             <ProjectCard key={index} project={item} />
           ))}
         </div>

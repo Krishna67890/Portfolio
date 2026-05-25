@@ -211,3 +211,21 @@
     text-align: center;
   }
 }
+
+@media (max-width: 360px) {
+  .footer-logo .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .footer-description {
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-content {
+    font-size: 0.75rem;
+  }
+}

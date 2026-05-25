@@ -28,16 +28,21 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const menuItems = [
+  const navItems = [
     { name: 'Home', href: '#hero', desc: "Go to the home section." },
-    { name: 'Projects', href: '#projects', desc: "Explore my technical projects and solutions." },
-    { name: 'Games', href: '#games', desc: "Play my interactive games and arcade experiences." },
-    { name: 'AI', href: '#ai-projects', desc: "Check out my artificial intelligence and robotics projects." },
-    { name: 'Skills', href: '#skills', desc: "View my technical arsenal and polyglot ambitions." },
-    { name: 'Contact', href: '#contact', desc: "Get in touch for collaborations or inquiries." },
-    { name: 'My Journey', action: onOpenJourney, desc: "Read about my professional path and background." },
+    { name: 'Projects', href: '#projects', desc: "Explore my technical projects." },
+    { name: 'Certificates', href: '#certificates', desc: "View my professional certifications." },
+    { name: 'AI', href: '#ai-projects', desc: "Check out my AI projects." },
+    { name: 'Skills', href: '#skills', desc: "View my technical arsenal." },
+    { name: 'Contact', href: '#contact', desc: "Get in touch." }
+  ];
+
+  const menuItems = [
+    ...navItems,
+    { name: 'Games', href: '#games', desc: "Play my interactive games." },
+    { name: 'My Journey', action: onOpenJourney, desc: "Read about my professional path." },
     { name: 'Terminal', action: onOpenTerminal, desc: "Launch the KPR developer terminal." },
-    { name: 'Game Mode', action: onOpenGame, desc: "Enter the full-screen arcade experience." }
+    { name: 'Game Mode', action: onOpenGame, desc: "Enter the arcade experience." }
   ];
 
   const handleProjectSelect = (e) => {
@@ -60,19 +65,11 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
         <div className="header-right">
           <nav className="nav">
             <ul className="nav-list">
-              {menuItems.map((item, index) => (
+              {navItems.map((item, index) => (
                 <li key={index}>
                   <a
-                    href={item.href || '#'}
-                    target={item.isExternal ? "_blank" : "_self"}
-                    rel={item.isExternal ? "noopener noreferrer" : ""}
+                    href={item.href}
                     onMouseEnter={() => speak(item.desc)}
-                    onClick={(e) => {
-                      if (item.action) {
-                        e.preventDefault();
-                        item.action();
-                      }
-                    }}
                   >
                     {item.name}
                   </a>
@@ -94,7 +91,8 @@ const Header = ({ onOpenJourney, onOpenGame, onOpenTerminal }) => {
           <div className="project-selector-container">
             <select className="project-selector" onChange={handleProjectSelect} aria-label="Select Project">
               <option value="">Quick Jump</option>
-              <option value="#projects">Advanced Projects</option>
+              <option value="#projects">💻 Advanced Projects</option>
+              <option value="#certificates">Certificates</option>
               <option value="#games">Games</option>
               <option value="#ai-projects">AI Projects</option>
               <option value="#skills">Skills</option>

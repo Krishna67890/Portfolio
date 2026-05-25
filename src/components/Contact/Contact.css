@@ -439,3 +439,30 @@
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 360px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .contact-info h3,
+  .form-header h3 {
+    font-size: 1.4rem;
+  }
+
+  .contact-item {
+    padding: 10px;
+  }
+
+  .item-icon {
+    font-size: 1.2rem;
+  }
+
+  .item-content strong {
+    font-size: 0.9rem;
+  }
+
+  .item-content span {
+    font-size: 0.8rem;
+  }
+}

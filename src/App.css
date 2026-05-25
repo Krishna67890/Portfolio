@@ -1,25 +1,31 @@
 :root {
   /* Ultra Modern Theme Variables */
   --bg-color: #020617;
+  --bg-secondary: #0f172a;
   --text-color: #3b82f6;
-  --secondary-text: #94a3b8;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
   --primary-color: #3b82f6;
   --neon-accent: #60a5fa;
   --card-bg: rgba(15, 23, 42, 0.4);
   --border-color: rgba(59, 130, 246, 0.15);
   --grid-color: rgba(59, 130, 246, 0.03);
   --rgb-border: linear-gradient(90deg, #3b82f6, #22d3ee, #818cf8, #3b82f6);
+  --heading-color: #ffffff;
 }
 
 [data-theme='light'] {
   --bg-color: #f8fafc;
+  --bg-secondary: #f1f5f9;
   --text-color: #1e40af;
-  --secondary-text: #475569;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
   --primary-color: #2563eb;
   --neon-accent: #3b82f6;
   --card-bg: rgba(255, 255, 255, 0.7);
   --border-color: rgba(37, 99, 235, 0.1);
   --grid-color: rgba(37, 99, 235, 0.05);
+  --heading-color: #0f172a;
 }
 
 * {

@@ -14,7 +14,7 @@ import linuxImg from '../../assets/Linux for Bingginners.png';
 import codes2Img from '../../assets/All codes part 2.jpg';
 import codes1Img from '../../assets/All codes part 1.jpg';
 
-const Courses = () => {
+const Courses = ({ searchQuery }) => {
   const courses = [
     {
       title: "Python Programming",
@@ -98,12 +98,22 @@ const Courses = () => {
     }
   ];
 
+  const filteredCourses = courses.filter(course =>
+    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.tech.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredCourses.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="courses" className="courses-section">
       <div className="container">
         <h2 className="section-title">🎓 Educational Courses</h2>
         <div className="projects-grid">
-          {courses.map((course, index) => (
+          {filteredCourses.map((course, index) => (
             <ProjectCard key={index} project={course} />
           ))}
         </div>

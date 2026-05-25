@@ -46,3 +46,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 360px) {
+  .background-card {
+    padding: 20px;
+  }
+
+  .background-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .background-card p {
+    font-size: 0.9rem;
+  }
+}

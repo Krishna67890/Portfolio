@@ -47,3 +47,21 @@
         gap: 30px;
     }
 }
+
+@media (max-width: 360px) {
+  .socials-grid {
+    gap: 20px;
+  }
+
+  .social-card {
+    min-width: 100px;
+  }
+
+  .social-icon {
+    font-size: 2.5rem;
+  }
+
+  .social-name {
+    font-size: 0.8rem;
+  }
+}

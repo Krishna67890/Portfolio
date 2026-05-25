@@ -151,3 +151,14 @@
     transform: translateX(0);
   }
 }
+
+@media (max-width: 360px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .nav-item {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+}

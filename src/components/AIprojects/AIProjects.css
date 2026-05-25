@@ -407,3 +407,18 @@
     padding: 6px 15px;
   }
 }
+
+@media (max-width: 360px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .ai-project-icon {
+    font-size: 2.5rem;
+  }
+
+  .ai-tech-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}

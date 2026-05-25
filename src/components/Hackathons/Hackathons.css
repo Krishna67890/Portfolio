@@ -111,3 +111,22 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 360px) {
+  .hack-content {
+    padding: 20px;
+  }
+
+  .hack-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .hack-content p {
+    font-size: 0.9rem;
+  }
+
+  .hack-badge {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}

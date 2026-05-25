@@ -27,7 +27,7 @@ import coffee10 from '../../assets/Cofee Shop 10.jpg';
 import coffee11 from '../../assets/Cofee Shop 11.jpg';
 import coffee12 from '../../assets/Cofee Shop 12.jpg';
 
-const MobileApps = () => {
+const MobileApps = ({ searchQuery }) => {
   const apps = [
     {
       title: "Coffee Shop App",
@@ -76,12 +76,22 @@ const MobileApps = () => {
     }
   ];
 
+  const filteredApps = apps.filter(app =>
+    app.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    app.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    app.tech.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredApps.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="mobile-apps" className="mobile-apps-section">
       <div className="container">
         <h2 className="section-title">📱 Mobile & Responsive Apps</h2>
         <div className="projects-grid">
-          {apps.map((app, index) => (
+          {filteredApps.map((app, index) => (
             <ProjectCard key={index} project={app} />
           ))}
         </div>

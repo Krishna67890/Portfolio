@@ -30,7 +30,7 @@ import memory from '../../assets/Memory Card Game.png';
 import tictactoe from '../../assets/Tic Tac Toe Game.png';
 import g2048 from '../../assets/2048 Game.png';
 
-const Games = () => {
+const Games = ({ searchQuery }) => {
   const games = [
     {
       title: "GameHub",
@@ -214,12 +214,22 @@ const Games = () => {
     }
   ];
 
+  const filteredGames = games.filter(game =>
+    game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    game.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    game.tech.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredGames.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="games" className="games-section">
       <div className="container">
         <h2 className="section-title">🎮 Games Showcase</h2>
         <div className="projects-grid">
-          {games.map((game, index) => (
+          {filteredGames.map((game, index) => (
             <ProjectCard key={index} project={game} />
           ))}
         </div>

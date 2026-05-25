@@ -180,3 +180,23 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 360px) {
+  .skills-immersive-wall {
+    gap: 20px;
+  }
+
+  .icon-container-floating {
+    width: 60px;
+    height: 60px;
+  }
+
+  .zone-title {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+
+  .future-tech-zone {
+    padding: 30px 15px;
+  }
+}

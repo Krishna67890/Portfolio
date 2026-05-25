@@ -7,6 +7,7 @@ import AIProjects from './components/AIprojects/AIProjects';
 import MobileApps from './components/MobileApps';
 import Products from './components/Products/Products';
 import Hackathons from './components/Hackathons/Hackathons';
+import Certificates from './components/Certificates';
 import Courses from './components/Courses';
 import ToolsCodes from './components/ToolsCodes';
 import Skills from './components/Skills';
@@ -27,6 +28,7 @@ function App() {
   const [isGameOpen, setIsGameOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useGsapAnimations(appRef);
 
@@ -71,18 +73,21 @@ function App() {
         onOpenJourney={() => setIsJourneyOpen(true)}
         onOpenGame={() => setIsGameOpen(true)}
         onOpenTerminal={() => setIsTerminalOpen(true)}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
       />
       <main>
         <Hero />
-        <Projects />
-        <Hackathons />
-        <Products />
-        <Games />
-        <AIProjects />
-        <MobileApps />
-        <Courses />
-        <ToolsCodes />
-        <Skills />
+        <Projects searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <Hackathons searchQuery={searchQuery} />
+        <Products searchQuery={searchQuery} />
+        <Games searchQuery={searchQuery} />
+        <AIProjects searchQuery={searchQuery} />
+        <MobileApps searchQuery={searchQuery} />
+        <Certificates searchQuery={searchQuery} />
+        <Courses searchQuery={searchQuery} />
+        <ToolsCodes searchQuery={searchQuery} />
+        <Skills searchQuery={searchQuery} />
         <Socials />
         <Contact />
         <Background />

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProjectCard from '../ProjectCard';
 import './Projects.css';
+import resumePdf from '../../assets/Krishna Patil resume.pdf';
 
 // Importing assets
 import tech1 from '../../assets/TechFundamentals 1.png';
@@ -103,7 +104,7 @@ import typing4 from '../../assets/typing 4.png';
 import little1 from '../../assets/Little-Learners-Hub 1.png';
 import little2 from '../../assets/Little-Learners-Hub 2.png';
 
-const Projects = () => {
+const Projects = ({ searchQuery, setSearchQuery }) => {
   const advancedProjects = [
     {
       title: "Samadhan Shoe Mart",
@@ -251,15 +252,56 @@ const Projects = () => {
     }
   ];
 
+  const filteredProjects = advancedProjects.filter(project =>
+    project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (project.tech && project.tech.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <h2 className="section-title">🚀 Advanced Projects</h2>
-        <div className="projects-grid">
-          {advancedProjects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
+        <div className="section-header-with-links">
+          <h2 className="section-title">💻 Advanced Projects</h2>
+
+          <div className="project-search-container">
+            <div className="search-wrapper">
+              <span className="search-icon">🔍</span>
+              <input
+                type="text"
+                placeholder="Search projects by name, tech or description..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="project-search-input"
+              />
+              {searchQuery && (
+                <button className="clear-search" onClick={() => setSearchQuery("")}>✕</button>
+              )}
+            </div>
+          </div>
+
+          <div className="project-quick-links">
+            <a href="https://github.com/krishna67890" target="_blank" rel="noopener noreferrer" title="GitHub">🐙 GitHub</a>
+            <a href={resumePdf} download="Krishna_Patil_Resume.pdf" title="Resume">📄 Resume</a>
+            <a href="https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/" target="_blank" rel="noopener noreferrer">Ⓜ️ Microsoft</a>
+            <a href="https://www.kaggle.com/krishnapatilrajput" target="_blank" rel="noopener noreferrer">📊 Kaggle</a>
+            <a href="https://www.credly.com/users/krishna-patil-rajput/" target="_blank" rel="noopener noreferrer">🏅 Credly</a>
+            <a href="https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1" target="_blank" rel="noopener noreferrer">🏆 Hack2Skills</a>
+          </div>
         </div>
+
+        {filteredProjects.length > 0 ? (
+          <div className="projects-grid">
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
+        ) : (
+          <div className="no-results">
+            <p>No projects match your search: "<strong>{searchQuery}</strong>"</p>
+            <button className="btn btn-secondary" onClick={() => setSearchQuery("")}>Clear Search</button>
+          </div>
+        )}
       </div>
     </section>
   );

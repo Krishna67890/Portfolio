@@ -1,12 +1,36 @@
-# React + Vite
+# 🌟 Professional Portfolio - Krishna Patil Rajput
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An immersive, high-performance portfolio built with **React**, **Vite**, and **GSAP**. This platform showcases a diverse range of technical expertise from MERN stack development to AI robotics and game design.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Voice Narration**: Uses the `Web Speech API` to provide audio descriptions for projects, certifications, and professional background. Just hover or click to listen!
+- **Dynamic Project Search**: A real-time search engine located in the Advanced Projects section that filters content across the entire portfolio by title, technology, or description.
+- **Interactive Certificates Gallery**: A dedicated section for achievements featuring a full-screen gallery with manual rotation controls, modern glass-morphic navigation, touch/swipe support, and automated voice narration.
+- **Developer Terminal**: A built-in CLI terminal (Press `T` or `` ` ``) for a unique navigation experience.
+- **Adaptive Theme Engine**: Seamlessly switches between Dark and Light modes, ensuring optimal readability and aesthetic appeal across the entire UI.
+- **Universal Navigation**: A precision-aligned header designed for perfect functionality on desktops, tablets, and smartphones.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React 18, Vite, GSAP (Animations), CSS3 (Modules & Glass-morphism)
+- **Features**: Web Speech API, React Hooks, Custom Terminal Logic
+- **Deployment**: Optimized for speed and responsiveness across all devices.
+
+## 📜 Recent Updates
+
+- ✅ **Added Professional Certificates**: Integrated 11+ certificates with click-to-speak functionality.
+- ✅ **Search Implementation**: Added a global search bar to the Advanced Projects section.
+- ✅ **Orientation & Scaling**: Fixed image rotations and applied custom scaling for certificates like C++ and Agentic AI.
+- ✅ **Modern Responsive UI**: Refined gallery navigation with floating controls and full touch/swipe support for mobile devices.
+- ✅ **Voice Narration**: Expanded voice triggers to the Hackathons and Certificates sections.
+
+## 📬 Contact & Links
+
+- **LinkedIn**: [Krishna Patil Rajput](https://www.linkedin.com/in/krishna-patil-rajput/)
+- **GitHub**: [Krishna67890](https://github.com/Krishna67890)
+- **Microsoft Learn**: [Krishna Patil Rajput](https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/)
+- **Kaggle**: [krishnapatilrajput](https://www.kaggle.com/krishnapatilrajput)
+- **Credly**: [Krishna Patil Rajput](https://www.credly.com/users/krishna-patil-rajput/)
+- **Hack2Skills**: [Krishna Patil Rajput](https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1)
+- **Blog & Codes**: [Krishna Blogy](https://krishnablogy.blogspot.com/)

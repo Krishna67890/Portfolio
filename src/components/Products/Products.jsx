@@ -4,7 +4,7 @@ import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import littleLearnersImg from '../../assets/Little-Learners-Hub 1.png';
 import linkedinImg from '../../assets/Linked in 1.png';
 
-const Products = () => {
+const Products = ({ searchQuery }) => {
   const { speak, stop } = usePortfolioVoice();
 
   const products = [
@@ -28,6 +28,15 @@ const Products = () => {
     }
   ];
 
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    product.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredProducts.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="products" className="products-section">
       <div className="container">
@@ -35,7 +44,7 @@ const Products = () => {
         <p className="section-subtitle">Premium Source Codes & Digital Assets</p>
 
         <div className="products-grid">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div
               key={product.id}
               className="product-card glass-morphism"

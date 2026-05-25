@@ -5,7 +5,7 @@ import sikkimImg from '../../assets/Siikkim 1.png';
 import prixImg from '../../assets/Prix Robotics 1.png';
 import aiVibeImg from '../../assets/AI assistant 1.png';
 
-const Hackathons = () => {
+const Hackathons = ({ searchQuery }) => {
   const { speak, stop } = usePortfolioVoice();
 
   const hackathons = [
@@ -37,12 +37,23 @@ const Hackathons = () => {
     }
   ];
 
+  const filteredHackathons = hackathons.filter(hack =>
+    hack.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    hack.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    hack.college.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    hack.position.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredHackathons.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="hackathons" className="hackathons-section">
       <div className="container">
         <h2 className="section-title">🏆 Hackathons & Achievements</h2>
         <div className="hackathons-timeline">
-          {hackathons.map((hack, index) => (
+          {filteredHackathons.map((hack, index) => (
             <div
               key={index}
               className="hack-card glass-morphism"

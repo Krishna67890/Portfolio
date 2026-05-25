@@ -2,7 +2,7 @@ import React from 'react';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 import './Skills.css';
 
-const Skills = () => {
+const Skills = ({ searchQuery }) => {
   const { speak } = usePortfolioVoice();
 
   const allSkills = [
@@ -53,6 +53,20 @@ const Skills = () => {
     { name: "Lua", icon: "lua", desc: "Lightweight scripting for games and apps." }
   ];
 
+  const filteredAllSkills = allSkills.filter(skill =>
+    skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    skill.desc.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredFutureSkills = futureSkills.filter(skill =>
+    skill.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    skill.desc.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredAllSkills.length === 0 && filteredFutureSkills.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   const handleMouseEnter = (skill) => {
     speak(`${skill.name}. ${skill.desc}`);
   };
@@ -62,55 +76,59 @@ const Skills = () => {
       <div className="container">
         <h2 className="section-title reveal-text" onMouseEnter={() => speak("This is my technical arsenal. Hover over any technology to learn more.")}>🛡️ Technical Arsenal</h2>
 
-        <div className="skills-immersive-wall">
-          {allSkills.map((skill, index) => (
-            <div
-              key={index}
-              className="skill-item-advanced bounce-hover"
-              onMouseEnter={() => handleMouseEnter(skill)}
-            >
-              <div className="icon-container-floating">
-                <img
-                  src={`https://skillicons.dev/icons?i=${skill.icon}`}
-                  alt={skill.name}
-                  className="skill-main-logo"
-                  loading="lazy"
-                />
-                <div className="skill-reflection">
-                  <img src={`https://skillicons.dev/icons?i=${skill.icon}`} alt="" />
-                </div>
-                <div className="skill-glow"></div>
-              </div>
-              <span className="skill-text-label">{skill.name}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="future-tech-zone">
-          <h3 className="zone-title" onMouseEnter={() => speak("My polyglot ambitions. I am currently exploring and expanding my knowledge in these technologies.")}>Polyglot Ambitions</h3>
-          <p className="zone-subtitle">Expanding my horizons across diverse programming paradigms and cloud architectures</p>
-          <div className="skills-immersive-wall mini">
-            {futureSkills.map((skill, index) => (
+        {filteredAllSkills.length > 0 && (
+          <div className="skills-immersive-wall">
+            {filteredAllSkills.map((skill, index) => (
               <div
                 key={index}
                 className="skill-item-advanced bounce-hover"
                 onMouseEnter={() => handleMouseEnter(skill)}
               >
-                <div className="icon-container-floating future">
+                <div className="icon-container-floating">
                   <img
                     src={`https://skillicons.dev/icons?i=${skill.icon}`}
                     alt={skill.name}
                     className="skill-main-logo"
+                    loading="lazy"
                   />
                   <div className="skill-reflection">
                     <img src={`https://skillicons.dev/icons?i=${skill.icon}`} alt="" />
                   </div>
+                  <div className="skill-glow"></div>
                 </div>
                 <span className="skill-text-label">{skill.name}</span>
               </div>
             ))}
           </div>
-        </div>
+        )}
+
+        {filteredFutureSkills.length > 0 && (
+          <div className="future-tech-zone">
+            <h3 className="zone-title" onMouseEnter={() => speak("My polyglot ambitions. I am currently exploring and expanding my knowledge in these technologies.")}>Polyglot Ambitions</h3>
+            <p className="zone-subtitle">Expanding my horizons across diverse programming paradigms and cloud architectures</p>
+            <div className="skills-immersive-wall mini">
+              {filteredFutureSkills.map((skill, index) => (
+                <div
+                  key={index}
+                  className="skill-item-advanced bounce-hover"
+                  onMouseEnter={() => handleMouseEnter(skill)}
+                >
+                  <div className="icon-container-floating future">
+                    <img
+                      src={`https://skillicons.dev/icons?i=${skill.icon}`}
+                      alt={skill.name}
+                      className="skill-main-logo"
+                    />
+                    <div className="skill-reflection">
+                      <img src={`https://skillicons.dev/icons?i=${skill.icon}`} alt="" />
+                    </div>
+                  </div>
+                  <span className="skill-text-label">{skill.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

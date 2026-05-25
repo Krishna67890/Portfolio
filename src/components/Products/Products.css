@@ -21,6 +21,26 @@
   margin: 0 auto;
 }
 
+@media (max-width: 360px) {
+  .section-subtitle {
+    font-size: 0.9rem;
+    margin-top: -20px;
+  }
+
+  .product-info {
+    padding: 15px;
+  }
+
+  .product-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .product-price {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
 .product-card {
   position: relative;
   border-radius: 20px;

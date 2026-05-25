@@ -295,6 +295,34 @@
   }
 }
 
+@media (max-width: 360px) {
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+  }
+
+  .card-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .modal-title-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-description-box p {
+    font-size: 0.85rem;
+  }
+
+  .thumbnail {
+    width: 60px;
+    height: 40px;
+  }
+}
+
 .slider-wrapper {
   display: flex;
   transition: transform 0.5s ease-out;

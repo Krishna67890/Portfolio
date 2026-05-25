@@ -7,6 +7,10 @@ const Socials = () => {
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/krishna67890', icon: '🐙', desc: "Check out my open source projects on GitHub." },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/krishna-patil-rajput-b66b03340', icon: '💼', desc: "Connect with me professionally on LinkedIn." },
+    { name: 'Microsoft', url: 'https://learn.microsoft.com/en-us/users/krishnapatilrajput-1391/', icon: 'Ⓜ️', desc: "View my Microsoft Learn profile and achievements." },
+    { name: 'Kaggle', url: 'https://www.kaggle.com/krishnapatilrajput', icon: '📊', desc: "Check out my data science projects on Kaggle." },
+    { name: 'Credly', url: 'https://www.credly.com/users/krishna-patil-rajput/', icon: '🏅', desc: "View my verified professional certifications on Credly." },
+    { name: 'Hack2Skills', url: 'https://hack2skill.com/dashboard/user_public_profile/?userId=6985d138d9155d4c3659a9e1&utm_source=hack2skill&utm_medium=homepage', icon: '🏆', desc: "See my hackathon participations on Hack2Skills." },
     { name: 'Blogger', url: 'https://krishnablogy.blogspot.com/', icon: '📝', desc: "Read my latest tech articles on my Blog." },
     { name: 'YouTube', url: 'https://www.youtube.com/@atharva_gaming_yt', icon: '📺', desc: "Watch my coding and gaming content on YouTube." },
     { name: 'Linktree', url: 'https://linktr.ee/KRISHNACODERS', icon: '🌲', desc: "View all my links in one place on Linktree." },

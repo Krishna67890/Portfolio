@@ -12,7 +12,7 @@ import yourAi from '../../assets/Your AI.png';
 import virtualAssistant from '../../assets/Chatbot Virtual Assistant.png';
 import chatbotJarvis from '../../assets/Chatbot Jarvis.png';
 
-const AIProjects = () => {
+const AIProjects = ({ searchQuery }) => {
   const aiItems = [
     {
       title: "Professional AI Assistant",
@@ -61,12 +61,22 @@ const AIProjects = () => {
     }
   ];
 
+  const filteredItems = aiItems.filter(item =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.tech.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (filteredItems.length === 0 && searchQuery !== "") {
+    return null;
+  }
+
   return (
     <section id="ai-projects" className="ai-section">
       <div className="container">
         <h2 className="section-title">🤖 AI Projects</h2>
         <div className="projects-grid">
-          {aiItems.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <ProjectCard key={index} project={item} />
           ))}
         </div>

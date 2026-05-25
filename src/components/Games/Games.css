@@ -23,3 +23,14 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
+
+@media (max-width: 360px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
