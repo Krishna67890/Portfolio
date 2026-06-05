@@ -2,6 +2,23 @@
 
 An immersive, high-performance portfolio built with **React**, **Vite**, and **GSAP**. This platform showcases a diverse range of technical expertise from MERN stack development to AI robotics and game design.
 
+## 🚀 Featured Projects Showcase
+
+### 🤖 AI & Hackathon Innovations
+- **Democracy Lens**: AI Election-Mentor (Winner @ Hack2Skill Virtual PromptWars) — [View Details](https://krishnablogy.blogspot.com/2026/04/democracy-lens-ai-election-mentor.html)
+- **Logimind AI**: Intelligent logistics solution for Google Solution Challenge 2026 — [View Details](https://krishnablogy.blogspot.com/2026/04/logimind-ai-by-solution-challenge-2026.html)
+- **EventPulse AI**: Comprehensive AI event management platform for Hack2Skills — [View Details](https://krishnablogy.blogspot.com/2026/04/event-pulse-ai-by-hack2skills-hackathon.html)
+- **AutoFlow AI**: Professional workflow automation tool powered by Generative AI — [View Details](https://krishnablogy.blogspot.com/2026/04/autoflow-ai-let-ai-do-your-work.html)
+
+### 🎮 Immersive Game Development
+- **Minecraft Building Quest**: A 3D block-building experience featuring parkour and creative modes — [Play Now](https://krishnablogy.blogspot.com/2026/04/block-parkour.html)
+- **Vertigo Suffers**: High-octane drift racing and obstacle course game with custom physics — [Play Now](https://krishnablogy.blogspot.com/2026/04/vertigo-drift-rage-obstacle-course.html)
+
+### 💻 Advanced Web Solutions
+- **Mulani Electricians**: Professional service management and business platform — [View Details](https://krishnablogy.blogspot.com/2026/05/mulani-electricals.html)
+- **Samadhan Shoe Mart**: Full-stack e-commerce with WhatsApp API integration.
+- **Velocity Motors**: Premium automotive showcase platform.
+
 ## 🌐 Key Features
 
 - **Interactive Voice Narration**: Uses the `Web Speech API` to provide audio descriptions for projects, certifications, and professional background. Just hover or click to listen!
