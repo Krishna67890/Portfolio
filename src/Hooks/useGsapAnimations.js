@@ -73,9 +73,9 @@ const useGsapAnimations = (ref) => {
       });
 
       // Interactive Skills Reveal - Exploding from Center
-      gsap.from('.skill-badge-item', {
+      gsap.from('.skill-item-advanced', {
         scrollTrigger: {
-          trigger: '.skills-container',
+          trigger: '.skills-immersive-wall',
           start: 'top 80%',
         },
         scale: 0,
@@ -90,23 +90,15 @@ const useGsapAnimations = (ref) => {
       });
 
       // Floating Photo Animation - With Reflection Glow
-      gsap.to('.photo-circle', {
-        y: -30,
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
-
-      // Continuous Reflection Sweep Animation for all RGB cards
-      gsap.to('.rgb-card::after', {
-        left: '200%',
-        duration: 3,
-        repeat: -1,
-        ease: 'none',
-        repeatDelay: 2
-      });
-
+      if (document.querySelector('.photo-circle')) {
+        gsap.to('.photo-circle', {
+          y: -30,
+          duration: 2.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+      }
     }, ref);
 
     return () => ctx.revert();
