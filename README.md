@@ -2,7 +2,7 @@
 
 An immersive, high-performance portfolio built with **React**, **Vite**, and **GSAP**. This platform showcases a diverse range of technical expertise from MERN stack development to AI robotics and game design.
 
-## 🚀 Key Features
+## 🌐 Key Features
 
 - **Interactive Voice Narration**: Uses the `Web Speech API` to provide audio descriptions for projects, certifications, and professional background. Just hover or click to listen!
 - **Dynamic Project Search**: A real-time search engine located in the Advanced Projects section that filters content across the entire portfolio by title, technology, or description.
@@ -19,10 +19,11 @@ An immersive, high-performance portfolio built with **React**, **Vite**, and **G
 
 ## 📜 Recent Updates
 
+- ✅ **Project Expansion**: Integrated 7+ new projects including EventPulse AI, Logimind AI, and Minecraft 3D.
+- ✅ **Visual Consistency**: Standardized primary action icons to the globe emoji (`🌐`) and cleaned codebase for Vercel deployment.
 - ✅ **Added Professional Certificates**: Integrated 11+ certificates with click-to-speak functionality.
 - ✅ **Search Implementation**: Added a global search bar to the Advanced Projects section.
-- ✅ **Orientation & Scaling**: Fixed image rotations and applied custom scaling for certificates like C++ and Agentic AI.
-- ✅ **Modern Responsive UI**: Refined gallery navigation with floating controls and full touch/swipe support for mobile devices.
+- ✅ **Orientation & Scaling**: Fixed image rotations and applied custom scaling for certificates.
 - ✅ **Voice Narration**: Expanded voice triggers to the Hackathons and Certificates sections.
 
 ## 📬 Contact & Links

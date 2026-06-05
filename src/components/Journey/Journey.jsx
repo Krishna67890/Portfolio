@@ -10,8 +10,8 @@ const Journey = ({ isOpen, onClose }) => {
 Education: 2nd Year IT Student at Matoshri College of Engineering and Research Centre. Focusing on Information Technology fundamentals and advanced software engineering principles. 💻
 Hands-on Experience: Development Expertise. Extensive experience in MERN Stack, Game Development, and Mobile App Development. Built 15+ advanced web projects, clones, and interactive platforms using modern technologies. 🔧
 Systems & Virtualization: OS & Environment Management. Skilled in configuring Dual Boot with Windows and Ubuntu, and VirtualBox. Actively managing various Linux distros like Manjaro and Linux Mint for testing performance and stability. ☁️
-Future Goals: DevOps & Cloud. Aiming to master DevOps practices, Cloud computing (AWS or Azure), and system automation. To become a versatile developer who understands the full lifecycle of software—from code to cloud deployment. 🚀
-Current Learning: Expanding Horizons. Deepening expertise in Game Development, Advanced Web, and App Development. Currently mastering game engines and cross-platform mobile frameworks.`;
+Future Goals: DevOps & Cloud. Aiming to master DevOps practices, Cloud computing (AWS or Azure), and system automation. To become a versatile developer who understands the full lifecycle of software—from code to cloud deployment. 🌐
+Current Learning: Expanding Horizons. Deepening expertise in Game Development, Advanced Web, and App Development. Currently mastering game engines and cross-platform mobile frameworks. 🌐`;
 
   useEffect(() => {
     if (isOpen) {
@@ -95,12 +95,12 @@ Current Learning: Expanding Horizons. Deepening expertise in Game Development, A
 
             <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Future Goals: Aiming to master DevOps and Cloud computing.")}>
               <div className="card-header">
-                <span className="card-icon">🚀</span>
+                <span className="card-icon">🌐</span>
                 <h3>Future Goals</h3>
               </div>
               <p><strong>DevOps & Cloud</strong></p>
               <p>Aiming to master DevOps practices, Cloud computing (AWS/Azure), and system automation.</p>
-              <p className="card-detail">Targeting the full software lifecycle—from code to cloud. 🚀</p>
+              <p className="card-detail">Targeting the full software lifecycle—from code to cloud. 🌐</p>
             </section>
 
             <section className="journey-section-card" onMouseEnter={() => portfolioSpeak("Current Learning: Expanding Horizons in Game and App Development.")}>
@@ -110,7 +110,7 @@ Current Learning: Expanding Horizons. Deepening expertise in Game Development, A
               </div>
               <p><strong>Expanding Horizons</strong></p>
               <p>Deepening expertise in Game Development, Advanced Web, and App Development.</p>
-              <p className="card-detail">Mastering game engines and cross-platform mobile frameworks.</p>
+              <p className="card-detail">Mastering game engines and cross-platform mobile frameworks. 🌐</p>
             </section>
           </div>
         </div>

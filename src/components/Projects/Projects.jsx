@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProjectCard from '../ProjectCard';
 import './Projects.css';
 import resumePdf from '../../assets/Krishna Patil resume.pdf';
@@ -104,8 +104,82 @@ import typing4 from '../../assets/typing 4.png';
 import little1 from '../../assets/Little-Learners-Hub 1.png';
 import little2 from '../../assets/Little-Learners-Hub 2.png';
 
+import eventpulse1 from '../../assets/Event Pulse AI Login.png';
+import eventpulse2 from '../../assets/Event Pulse AI 2.png';
+import eventpulse3 from '../../assets/Eventpulse AI 3.png';
+import eventpulse4 from '../../assets/Eventpulse AI 4.png';
+import eventpulse5 from '../../assets/Eventpulse AI 5.png';
+
+import logimind1 from '../../assets/Logimind AI 1.png';
+import logimind2 from '../../assets/Logimind AI 2 Login.png';
+import logimind3 from '../../assets/Logimind AI 3.png';
+import logimind4 from '../../assets/Logimind AI 4.png';
+import logimind5 from '../../assets/Logimind AI 5.png';
+import logimind6 from '../../assets/Logimind AI 6.png';
+import logimind7 from '../../assets/Logimind AI 7.png';
+
+import autoflow1 from '../../assets/Autoflow AI 1 login.png';
+import autoflow2 from '../../assets/AutoFlow AI 2.png';
+import autoflow3 from '../../assets/AutoFlow AI 3.png';
+import autoflow4 from '../../assets/AutoFlow AI 4.png';
+import autoflow5 from '../../assets/AutoFlow AI 5.png';
+import autoflow6 from '../../assets/AutoFlow AI 6.png';
+
+import democracy1 from '../../assets/Democracy lens 1.png';
+import democracy2 from '../../assets/Democracy lens 2.png';
+import democracy3 from '../../assets/Democracy Lens 3.png';
+import democracy4 from '../../assets/Democracy lens 4.png';
+import democracy5 from '../../assets/Democracy Lens 5.png';
+import democracy6 from '../../assets/Democracy Lens 6.png';
+
+import mulani1 from '../../assets/Mulani Electricians 1.png';
+import mulani2 from '../../assets/Mulani Electricians 2.png';
+import mulani3 from '../../assets/Mulani Electricians 3.png';
+import mulani4 from '../../assets/Mulani Electricians 4.png';
+import mulani5 from '../../assets/Mulani Electricians 5.png';
+
 const Projects = ({ searchQuery, setSearchQuery }) => {
   const advancedProjects = [
+    {
+      title: "EventPulse AI",
+      description: "An AI-powered event management platform developed for Hack2Skills, streamlining event planning and attendee engagement.",
+      tech: "React, AI Integration, Hack2Skills, Tailwind CSS",
+      image: eventpulse1,
+      screenshots: [eventpulse1, eventpulse2, eventpulse3, eventpulse4, eventpulse5],
+      link: "https://krishnablogy.blogspot.com/2026/04/event-pulse-ai-by-hack2skills-hackathon.html"
+    },
+    {
+      title: "Logimind AI",
+      description: "An intelligent solution for logistics and supply chain management, submitted for the Solution Challenge 2026.",
+      tech: "AI, Logistics Tech, React, Hack2Skills",
+      image: logimind1,
+      screenshots: [logimind1, logimind2, logimind3, logimind4, logimind5, logimind6, logimind7],
+      link: "https://krishnablogy.blogspot.com/2026/04/logimind-ai-by-solution-challenge-2026.html"
+    },
+    {
+      title: "AutoFlow AI",
+      description: "A productivity-focused AI tool that automates repetitive tasks and streamlines professional workflows.",
+      tech: "AI Automation, React, Hack2Skills",
+      image: autoflow1,
+      screenshots: [autoflow1, autoflow2, autoflow3, autoflow4, autoflow5, autoflow6],
+      link: "https://krishnablogy.blogspot.com/2026/04/autoflow-ai-let-ai-do-your-work.html"
+    },
+    {
+      title: "Democracy Lens - AI Election-Mentor",
+      description: "An AI-driven platform for electoral awareness and guidance, winner at Hack2Skill Virtual PromptWars.",
+      tech: "Generative AI, React, Hack2Skills",
+      image: democracy1,
+      screenshots: [democracy1, democracy2, democracy3, democracy4, democracy5, democracy6],
+      link: "https://krishnablogy.blogspot.com/2026/04/democracy-lens-ai-election-mentor.html"
+    },
+    {
+      title: "Mulani Electricians",
+      description: "A professional service platform for Mulani Electricals, featuring service listings and customer engagement.",
+      tech: "React, UI/UX, Service Management",
+      image: mulani1,
+      screenshots: [mulani1, mulani2, mulani3, mulani4, mulani5],
+      link: "https://krishnablogy.blogspot.com/2026/05/mulani-electricals.html"
+    },
     {
       title: "Samadhan Shoe Mart",
       description: "A comprehensive shoe e-commerce platform with WhatsApp-integrated payment and order management.",

@@ -169,8 +169,8 @@ const Contact = () => {
               </div>
             </div>
             
-            <button type="submit" className="submit-btn" onMouseEnter={() => speak("Click here to send your message to my email address.")}>
-              <span className="btn-icon">🚀</span>
+            <button type="submit" className="submit-btn" onMouseEnter={() => speak("Click here to send your message to my official address.")}>
+              <span className="btn-icon">🌐</span>
               Send Message
             </button>
             

@@ -29,9 +29,32 @@ import cricket from '../../assets/Cricket game.png';
 import memory from '../../assets/Memory Card Game.png';
 import tictactoe from '../../assets/Tic Tac Toe Game.png';
 import g2048 from '../../assets/2048 Game.png';
+import minecraft1 from '../../assets/Minecraft 1 game building .png';
+import minecraft2 from '../../assets/MineCraft 2 game building.png';
+import vertigo1 from '../../assets/Vertigo Suffers 1.png';
+import vertigo2 from '../../assets/Vertigo Suffers 2.png';
+import vertigo3 from '../../assets/Vertigo Suffers 3.png';
 
 const Games = ({ searchQuery }) => {
   const games = [
+    {
+      title: "Minecraft Building Game",
+      description: "An immersive 3D block-building experience inspired by Minecraft, featuring creative construction and parkour elements.",
+      tech: "JavaScript, 3D Graphics, Game Logic",
+      image: minecraft1,
+      screenshots: [minecraft1, minecraft2],
+      link: "https://krishnablogy.blogspot.com/2026/04/block-parkour.html",
+      github: "#"
+    },
+    {
+      title: "Vertigo Suffers",
+      description: "A high-octane drift and obstacle course game designed to test player reflexes and precision.",
+      tech: "JavaScript, Game Physics, Canvas API",
+      image: vertigo1,
+      screenshots: [vertigo1, vertigo2, vertigo3],
+      link: "https://krishnablogy.blogspot.com/2026/04/vertigo-drift-rage-obstacle-course.html",
+      github: "#"
+    },
     {
       title: "GameHub",
       description: "A centralized platform for gamers featuring multi-genre game collections and community engagement tools.",

@@ -269,7 +269,7 @@ const GameMode = ({ isOpen, onClose }) => {
             <h2 className="glitch-text">ARCADE MODE</h2>
             <div className="menu-grid">
               <div className="menu-card" onClick={() => startGame('flappy')}>
-                <div className="card-icon">🚀</div>
+                <div className="card-icon">🌐</div>
                 <h3>Flappy Journey</h3>
                 <p>Navigate through career milestones. Avoid the obstacles!</p>
                 <button className="btn glow-btn">Launch</button>

@@ -32,11 +32,11 @@ const Background = () => {
           </div>
 
           <div className="background-card rgb-card">
-            <div className="card-icon">🚀</div>
+            <div className="card-icon">🌐</div>
             <h3>Current Learning</h3>
             <p><strong>Expanding Horizons</strong></p>
             <p>Deepening expertise in <strong>Game Development</strong>, Advanced Web, and App Development.</p>
-            <p className="card-detail">Currently mastering game engines and cross-platform mobile frameworks.</p>
+            <p className="card-detail">Currently mastering game engines and cross-platform mobile frameworks. 🌐</p>
           </div>
 
           <div className="background-card rgb-card">
