@@ -73,25 +73,29 @@ const useGsapAnimations = (ref) => {
       });
 
       // Interactive Skills Reveal - Exploding from Center
-      gsap.from('.skill-item-advanced', {
-        scrollTrigger: {
-          trigger: '.skills-immersive-wall',
-          start: 'top 80%',
-        },
-        scale: 0,
-        opacity: 0,
-        rotation: 360,
-        duration: 1,
-        stagger: {
-          each: 0.03,
-          from: 'center'
-        },
-        ease: 'elastic.out(1, 0.3)'
-      });
+      const skillItems = gsap.utils.toArray('.skill-item-advanced');
+      if (skillItems.length > 0) {
+        gsap.from(skillItems, {
+          scrollTrigger: {
+            trigger: '.skills-immersive-wall',
+            start: 'top 80%',
+          },
+          scale: 0,
+          opacity: 0,
+          rotation: 360,
+          duration: 1,
+          stagger: {
+            each: 0.03,
+            from: 'center'
+          },
+          ease: 'elastic.out(1, 0.3)'
+        });
+      }
 
       // Floating Photo Animation - With Reflection Glow
-      if (document.querySelector('.photo-circle')) {
-        gsap.to('.photo-circle', {
+      const photoCircle = document.querySelector('.photo-circle');
+      if (photoCircle) {
+        gsap.to(photoCircle, {
           y: -30,
           duration: 2.5,
           repeat: -1,
