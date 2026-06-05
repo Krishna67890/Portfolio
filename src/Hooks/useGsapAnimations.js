@@ -47,31 +47,29 @@ const useGsapAnimations = (ref) => {
 
       // Advanced Stagger for Cards - Jumping Animation
       const cardSelectors = [
-        '.advanced-project-card',
-        '.skill-swag-card',
-        '.background-card',
-        '.ai-card',
-        '.app-card',
-        '.logic-card'
+        '.project-card',      // General project cards
+        '.background-card',   // Journey cards
+        '.certificate-card',  // Certificate cards
+        '.menu-card'          // Game menu cards
       ];
 
       cardSelectors.forEach(selector => {
-        gsap.from(selector, {
-          scrollTrigger: {
-            trigger: selector,
-            start: 'top 90%',
-          },
-          y: 100,
-          rotationX: -15,
-          opacity: 0,
-          duration: 1.2,
-          stagger: {
-            amount: 0.4,
-            from: 'start'
-          },
-          ease: 'back.out(2)',
-          clearProps: 'all'
-        });
+        const elements = gsap.utils.toArray(selector);
+        if (elements.length > 0) {
+          gsap.from(elements, {
+            scrollTrigger: {
+              trigger: elements[0],
+              start: 'top 90%',
+            },
+            y: 100,
+            rotationX: -15,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.1,
+            ease: 'back.out(2)',
+            clearProps: 'all'
+          });
+        }
       });
 
       // Interactive Skills Reveal - Exploding from Center
