@@ -1,3 +1,23 @@
+.section-title.reveal-text, .zone-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.title-emoji {
+  display: inline-block;
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
+.title-text {
+  background: linear-gradient(to right, var(--primary-color), var(--neon-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .skills-section-cinematic {
   padding: 100px 0;
   perspective: 1500px;

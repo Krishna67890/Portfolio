@@ -74,7 +74,9 @@ const Skills = ({ searchQuery }) => {
   return (
     <section id="skills" className="skills-section-cinematic">
       <div className="container">
-        <h2 className="section-title reveal-text" onMouseEnter={() => speak("This is my technical arsenal. Hover over any technology to learn more.")}>🛡️ Technical Arsenal</h2>
+        <h2 className="section-title reveal-text" onMouseEnter={() => speak("This is my technical arsenal. Hover over any technology to learn more.")}>
+          <span className="title-emoji">🛡️</span> <span className="title-text">Technical Arsenal</span>
+        </h2>
 
         {filteredAllSkills.length > 0 && (
           <div className="skills-immersive-wall">
@@ -104,7 +106,9 @@ const Skills = ({ searchQuery }) => {
 
         {filteredFutureSkills.length > 0 && (
           <div className="future-tech-zone">
-            <h3 className="zone-title" onMouseEnter={() => speak("My polyglot ambitions. I am currently exploring and expanding my knowledge in these technologies.")}>Polyglot Ambitions</h3>
+            <h3 className="zone-title" onMouseEnter={() => speak("My polyglot ambitions. I am currently exploring and expanding my knowledge in these technologies.")}>
+              <span className="title-emoji">🌐</span> <span className="title-text">Polyglot Ambitions</span>
+            </h3>
             <p className="zone-subtitle">Expanding my horizons across diverse programming paradigms and cloud architectures</p>
             <div className="skills-immersive-wall mini">
               {filteredFutureSkills.map((skill, index) => (

@@ -29,23 +29,23 @@ const useGsapAnimations = (ref) => {
         ease: 'back.out(1.7)'
       }, '-=0.8');
 
-      // Universal Section Animation - Bouncing Entry
+      // Universal Section Animation - Smoother, Slower Entry
       const sections = gsap.utils.toArray('section');
       sections.forEach(section => {
         gsap.from(section, {
           scrollTrigger: {
             trigger: section,
-            start: 'top 85%',
+            start: 'top 90%',
             toggleActions: 'play none none none'
           },
           opacity: 0,
-          y: 80,
-          duration: 1.5,
-          ease: 'elastic.out(1, 0.5)'
+          y: 60,
+          duration: 1.8,
+          ease: 'power3.out'
         });
       });
 
-      // Advanced Stagger for Cards - Jumping Animation
+      // Advanced Stagger for Cards - Elegant Fade & Rise
       const cardSelectors = [
         '.project-card',      // General project cards
         '.background-card',   // Journey cards
@@ -59,14 +59,13 @@ const useGsapAnimations = (ref) => {
           gsap.from(elements, {
             scrollTrigger: {
               trigger: elements[0],
-              start: 'top 90%',
+              start: 'top 95%',
             },
-            y: 100,
-            rotationX: -15,
+            y: 50,
             opacity: 0,
-            duration: 1.2,
-            stagger: 0.1,
-            ease: 'back.out(2)',
+            duration: 1.5,
+            stagger: 0.15,
+            ease: 'power2.out',
             clearProps: 'all'
           });
         }
@@ -77,18 +76,19 @@ const useGsapAnimations = (ref) => {
       if (skillItems.length > 0) {
         gsap.from(skillItems, {
           scrollTrigger: {
-            trigger: '.skills-immersive-wall',
-            start: 'top 80%',
+            trigger: '#skills',
+            start: 'top 85%',
           },
-          scale: 0,
+          scale: 0.5,
           opacity: 0,
-          rotation: 360,
+          rotation: 45,
           duration: 1,
           stagger: {
-            each: 0.03,
-            from: 'center'
+            each: 0.05,
+            from: 'start'
           },
-          ease: 'elastic.out(1, 0.3)'
+          ease: 'back.out(1.7)',
+          clearProps: 'all'
         });
       }
 

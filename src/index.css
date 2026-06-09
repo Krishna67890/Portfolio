@@ -81,6 +81,13 @@ html {
   font-size: 16px;
 }
 
+/* Custom Smooth Scroll for modern browsers */
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   font-family: var(--font-primary);
   background-color: var(--bg-color);
@@ -90,6 +97,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Typography */
