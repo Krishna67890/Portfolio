@@ -41,7 +41,9 @@ An immersive, high-performance portfolio built with **React**, **Vite**, and **G
 - ✅ **Added Professional Certificates**: Integrated 11+ certificates with click-to-speak functionality.
 - ✅ **Search Implementation**: Added a global search bar to the Advanced Projects section.
 - ✅ **Orientation & Scaling**: Fixed image rotations and applied custom scaling for certificates.
-- ✅ **Voice Narration**: Expanded voice triggers to the Hackathons and Certificates sections.
+- ✅ **Voice Stability**: Refined the speech engine with persistent references to prevent audio cutting and implemented an error filter to silence "interrupted" logs during rapid navigation.
+- ✅ **Cinematic Smoothness**: Upgraded GSAP easing curves and increased transition durations to 1.8s for a more premium, fluid user experience.
+- ✅ **UI Refinement**: Fixed emoji visibility in section headers by preventing CSS gradient clipping on icons.
 
 ## 📬 Contact & Links
 

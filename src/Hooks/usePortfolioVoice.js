@@ -78,7 +78,13 @@ export const usePortfolioVoice = () => {
     };
 
     utterance.onerror = (event) => {
-      console.error('SpeechSynthesisUtterance error', event);
+      // These are normal results of stopping speech to start a new one on hover
+      const silentErrors = ['interrupted', 'canceled', 'agent-restarted'];
+
+      if (!silentErrors.includes(event.error)) {
+        console.error('SpeechSynthesisUtterance error:', event.error, event);
+      }
+
       setIsSpeaking(false);
       setIsPaused(false);
       utteranceRef.current = null;
