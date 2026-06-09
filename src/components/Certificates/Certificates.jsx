@@ -3,7 +3,7 @@ import './Certificates.css';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
 // Importing Certificate Assets
-import cppCert from '../../assets/Certificates/CCPPCourse.jpg';
+import cppCert from '../../assets/Certificates/Cpp-and-Oop-Concepts.jpg';
 import pythonCert from '../../assets/Certificates/Python Complete course.jpg';
 import spotifyCert from '../../assets/Certificates/Spotify data Visualization.jpg';
 import hacktoberfestCert from '../../assets/Certificates/Certificate of Hacktoberfest.jpg';
