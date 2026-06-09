@@ -63,11 +63,25 @@ section {
   font-weight: 900;
   text-align: center;
   margin-bottom: 4rem;
+  letter-spacing: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.title-emoji {
+  display: inline-block;
+  font-size: 1.1em;
+  filter: drop-shadow(0 0 10px var(--primary-color));
+  -webkit-text-fill-color: initial; /* Reset gradient clip for emoji */
+}
+
+.title-text {
   background: linear-gradient(to right, var(--primary-color), var(--neon-accent));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  letter-spacing: -2px;
 }
 
 /* Fixed Card Interactivity Issues */

@@ -1,18 +1,20 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 export const usePortfolioVoice = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [voiceType, setVoiceType] = useState(localStorage.getItem('preferredVoice') || 'male');
+  const utteranceRef = useRef(null);
 
   useEffect(() => {
     const updateVoices = () => {
-      // Just to trigger voices loading in some browsers
       window.speechSynthesis.getVoices();
     };
 
     updateVoices();
-    window.speechSynthesis.onvoiceschanged = updateVoices;
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = updateVoices;
+    }
 
     return () => {
       window.speechSynthesis.cancel();
@@ -21,51 +23,45 @@ export const usePortfolioVoice = () => {
 
   const speak = useCallback((text) => {
     if (!text) return;
+
+    // Stop any current speech
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
+    utteranceRef.current = utterance; // Keep reference to prevent GC issues
+
     const allVoices = window.speechSynthesis.getVoices();
     const enVoices = allVoices.filter(v => v.lang.startsWith('en'));
 
     let selectedVoice = null;
 
     if (voiceType === 'female') {
-      // Priority list for female voices across browsers
       const femaleIdentifiers = ['female', 'zira', 'samantha', 'victoria', 'karen', 'moira', 'tessa', 'rishi', 'susan', 'premium'];
       selectedVoice = enVoices.find(v =>
         femaleIdentifiers.some(id => v.name.toLowerCase().includes(id)) &&
         !v.name.toLowerCase().includes('male')
       );
 
-      // Fallback if no specific identifier found, try to avoid "David" or "Daniel"
       if (!selectedVoice) {
         selectedVoice = enVoices.find(v => !v.name.toLowerCase().includes('david') && !v.name.toLowerCase().includes('daniel'));
       }
     } else {
-      // Priority list for male voices across browsers
       const maleIdentifiers = ['male', 'david', 'daniel', 'alex', 'fred', 'premium'];
       selectedVoice = enVoices.find(v =>
         maleIdentifiers.some(id => v.name.toLowerCase().includes(id)) &&
         !v.name.toLowerCase().includes('female') && !v.name.toLowerCase().includes('zira')
       );
 
-      // Fallback to anything labeled "Google US English" or similar if no male identifier
       if (!selectedVoice) {
         selectedVoice = enVoices.find(v => v.name.toLowerCase().includes('google us english'));
       }
     }
 
-    // Ultimate fallback to first English voice
     if (!selectedVoice) selectedVoice = enVoices[0];
 
     if (selectedVoice) {
       utterance.voice = selectedVoice;
-      // Adjust pitch for better gender representation if generic voice
-      if (voiceType === 'female') {
-        utterance.pitch = 1.2;
-      } else {
-        utterance.pitch = 0.9;
-      }
+      utterance.pitch = voiceType === 'female' ? 1.2 : 0.9;
     }
 
     utterance.rate = 1.0;
@@ -78,20 +74,24 @@ export const usePortfolioVoice = () => {
     utterance.onend = () => {
       setIsSpeaking(false);
       setIsPaused(false);
+      utteranceRef.current = null;
     };
 
-    utterance.onerror = () => {
+    utterance.onerror = (event) => {
+      console.error('SpeechSynthesisUtterance error', event);
       setIsSpeaking(false);
       setIsPaused(false);
+      utteranceRef.current = null;
     };
 
     window.speechSynthesis.speak(utterance);
-  }, [voiceType]); // Added voiceType as dependency
+  }, [voiceType]);
 
   const stop = useCallback(() => {
     window.speechSynthesis.cancel();
     setIsSpeaking(false);
     setIsPaused(false);
+    utteranceRef.current = null;
   }, []);
 
   const pause = useCallback(() => {

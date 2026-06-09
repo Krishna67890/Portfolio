@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './Certificates.css';
 import { usePortfolioVoice } from '../../Hooks/usePortfolioVoice';
 
@@ -15,101 +15,104 @@ import jsDomCert from '../../assets/Certificates/JS Dom Manupulation from fyned 
 import internshipCert from '../../assets/Certificates/Full stack dev internship program by eduraka.jpg';
 import aiHackCert from '../../assets/Certificates/International Agentic AI Hacathon Sandip University.jpg';
 
+const certificatesData = [
+  {
+    title: "C++ and OOP Concepts",
+    issuer: "Course Completion",
+    image: cppCert,
+    description: "Comprehensive certification in C++ programming and Object Oriented Programming principles.",
+    narration: "Certificate for C++ and OOP Concepts. This certification covers comprehensive C++ programming and Object Oriented Programming principles.",
+    initialRotation: 270,
+    initialScale: 0.7
+  },
+  {
+    title: "International Agentic AI Hackathon",
+    issuer: "Sandip University",
+    image: aiHackCert,
+    description: "Recognized for participation and innovation in the International Agentic AI Hackathon.",
+    narration: "International Agentic AI Hackathon Certificate from Sandip University. Recognized for participation and innovation in Agentic AI technologies.",
+    initialRotation: 270,
+    initialScale: 0.7
+  },
+  {
+    title: "Python Complete Course",
+    issuer: "Course Completion",
+    image: pythonCert,
+    description: "Mastery of Python programming language from basics to advanced levels.",
+    narration: "Python Complete Course Certificate. Representing mastery of Python programming language from basics to advanced levels."
+  },
+  {
+    title: "Full Stack Web Development Internship",
+    issuer: "Edureka",
+    image: internshipCert,
+    description: "Successfully completed the Full Stack Web Development internship program.",
+    narration: "Full Stack Web Development Internship Certificate by Edureka. Successfully completed the intensive internship program."
+  },
+  {
+    title: "Cybersecurity Essentials 101",
+    issuer: "Cisco / Networking Academy",
+    image: cyberCert,
+    description: "Foundational knowledge in cybersecurity threats, risks, and protection methods.",
+    narration: "Cybersecurity Essentials 101 Certificate. Foundational knowledge in cybersecurity threats, risks, and protection methods."
+  },
+  {
+    title: "Cloud Native Computing",
+    issuer: "Bhujbal Knowledge City",
+    image: cloudCert,
+    description: "Certification in Cloud Native technologies and architectures.",
+    narration: "Cloud Native Computing Certificate from Bhujbal Knowledge City. Focusing on modern cloud technologies and architectures."
+  },
+  {
+    title: "JS DOM Manipulation",
+    issuer: "Fyned Academy",
+    image: jsDomCert,
+    description: "Expertise in JavaScript Document Object Model manipulation for dynamic web apps.",
+    narration: "JavaScript DOM Manipulation Certificate from Fyned Academy. Expertise in manipulating the Document Object Model for dynamic web applications."
+  },
+  {
+    title: "Hacktoberfest Contribution",
+    issuer: "DigitalOcean / Hacktoberfest",
+    image: hacktoberfestCert,
+    description: "Awarded for successful contributions to open-source projects during Hacktoberfest.",
+    narration: "Certificate of Hacktoberfest. Awarded for successful contributions to open-source projects."
+  },
+  {
+    title: "Spotify Data Visualization",
+    issuer: "Data Science Project",
+    image: spotifyCert,
+    description: "Certification for data analysis and visualization of Spotify streaming data.",
+    narration: "Spotify Data Visualization Certificate. Awarded for excellence in data analysis and visualization of music streaming trends."
+  },
+  {
+    title: "MERN Stack Interview Prep",
+    issuer: "Technical Training",
+    image: mernCert,
+    description: "Advanced preparation and mastery of MERN stack concepts for professional roles.",
+    narration: "MERN Stack Interview Questions Certificate. Demonstrating advanced preparation and mastery of MongoDB, Express, React, and Node.js concepts."
+  },
+  {
+    title: "All India Career Summit",
+    issuer: "Aptus",
+    image: careerCert,
+    description: "Participation in the national level career summit for engineering professionals.",
+    narration: "All India Career Summit Certificate by Aptus. Participation in the national level career summit for engineering professionals."
+  }
+];
+
 const Certificates = ({ searchQuery }) => {
   const { speak, stop } = usePortfolioVoice();
   const [selectedCertIndex, setSelectedCertIndex] = useState(null);
   const [rotation, setRotation] = useState(0);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
-  const certificates = [
-    {
-      title: "C++ and OOP Concepts",
-      issuer: "Course Completion",
-      image: cppCert,
-      description: "Comprehensive certification in C++ programming and Object Oriented Programming principles.",
-      narration: "Certificate for C++ and OOP Concepts. This certification covers comprehensive C++ programming and Object Oriented Programming principles.",
-      initialRotation: 270,
-      initialScale: 0.7
-    },
-    {
-      title: "International Agentic AI Hackathon",
-      issuer: "Sandip University",
-      image: aiHackCert,
-      description: "Recognized for participation and innovation in the International Agentic AI Hackathon.",
-      narration: "International Agentic AI Hackathon Certificate from Sandip University. Recognized for participation and innovation in Agentic AI technologies.",
-      initialRotation: 270,
-      initialScale: 0.7
-    },
-    {
-      title: "Python Complete Course",
-      issuer: "Course Completion",
-      image: pythonCert,
-      description: "Mastery of Python programming language from basics to advanced levels.",
-      narration: "Python Complete Course Certificate. Representing mastery of Python programming language from basics to advanced levels."
-    },
-    {
-      title: "Full Stack Web Development Internship",
-      issuer: "Edureka",
-      image: internshipCert,
-      description: "Successfully completed the Full Stack Web Development internship program.",
-      narration: "Full Stack Web Development Internship Certificate by Edureka. Successfully completed the intensive internship program."
-    },
-    {
-      title: "Cybersecurity Essentials 101",
-      issuer: "Cisco / Networking Academy",
-      image: cyberCert,
-      description: "Foundational knowledge in cybersecurity threats, risks, and protection methods.",
-      narration: "Cybersecurity Essentials 101 Certificate. Foundational knowledge in cybersecurity threats, risks, and protection methods."
-    },
-    {
-      title: "Cloud Native Computing",
-      issuer: "Bhujbal Knowledge City",
-      image: cloudCert,
-      description: "Certification in Cloud Native technologies and architectures.",
-      narration: "Cloud Native Computing Certificate from Bhujbal Knowledge City. Focusing on modern cloud technologies and architectures."
-    },
-    {
-      title: "JS DOM Manipulation",
-      issuer: "Fyned Academy",
-      image: jsDomCert,
-      description: "Expertise in JavaScript Document Object Model manipulation for dynamic web apps.",
-      narration: "JavaScript DOM Manipulation Certificate from Fyned Academy. Expertise in manipulating the Document Object Model for dynamic web applications."
-    },
-    {
-      title: "Hacktoberfest Contribution",
-      issuer: "DigitalOcean / Hacktoberfest",
-      image: hacktoberfestCert,
-      description: "Awarded for successful contributions to open-source projects during Hacktoberfest.",
-      narration: "Certificate of Hacktoberfest. Awarded for successful contributions to open-source projects."
-    },
-    {
-      title: "Spotify Data Visualization",
-      issuer: "Data Science Project",
-      image: spotifyCert,
-      description: "Certification for data analysis and visualization of Spotify streaming data.",
-      narration: "Spotify Data Visualization Certificate. Awarded for excellence in data analysis and visualization of music streaming trends."
-    },
-    {
-      title: "MERN Stack Interview Prep",
-      issuer: "Technical Training",
-      image: mernCert,
-      description: "Advanced preparation and mastery of MERN stack concepts for professional roles.",
-      narration: "MERN Stack Interview Questions Certificate. Demonstrating advanced preparation and mastery of MongoDB, Express, React, and Node.js concepts."
-    },
-    {
-      title: "All India Career Summit",
-      issuer: "Aptus",
-      image: careerCert,
-      description: "Participation in the national level career summit for engineering professionals.",
-      narration: "All India Career Summit Certificate by Aptus. Participation in the national level career summit for engineering professionals."
-    }
-  ];
-
-  const filteredCertificates = certificates.filter(cert =>
-    cert.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    cert.issuer.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    cert.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCertificates = useMemo(() =>
+    certificatesData.filter(cert =>
+      cert.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cert.issuer.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cert.description.toLowerCase().includes(searchQuery.toLowerCase())
+    ), [searchQuery]);
 
   const openGallery = (index) => {
     setSelectedCertIndex(index);
@@ -146,7 +149,7 @@ const Certificates = ({ searchQuery }) => {
     if (selectedCertIndex !== null && filteredCertificates[selectedCertIndex]) {
       speak(filteredCertificates[selectedCertIndex].narration);
     }
-  }, [selectedCertIndex, filteredCertificates, speak]);
+  }, [selectedCertIndex, speak, filteredCertificates]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -169,9 +172,6 @@ const Certificates = ({ searchQuery }) => {
   };
 
   const resetRotation = () => setRotate({ x: 0, y: 0 });
-
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
 
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
@@ -199,11 +199,28 @@ const Certificates = ({ searchQuery }) => {
   return (
     <section id="certificates" className="certificates-section">
       <div className="container">
-        <h2 className="section-title">📜 Professional Certifications</h2>
+        <h2 className="section-title">
+          <span className="title-emoji">📜</span>
+          <span className="title-text">Professional Certifications</span>
+        </h2>
         <p className="section-subtitle">Click on any certificate to view in gallery and hear details</p>
         <div className="certificates-grid">
           {filteredCertificates.map((cert, index) => (
-            <div key={index} className="certificate-card glass-morphism" onClick={() => openGallery(index)}>
+            <div
+              key={index}
+              className="certificate-card glass-morphism"
+              onClick={() => openGallery(index)}
+              onMouseEnter={() => {
+                if (selectedCertIndex === null) {
+                  speak(`${cert.title}. Issued by ${cert.issuer}`);
+                }
+              }}
+              onMouseLeave={() => {
+                if (selectedCertIndex === null) {
+                  stop();
+                }
+              }}
+            >
               <div className="certificate-image-container">
                 <img
                   src={cert.image}
